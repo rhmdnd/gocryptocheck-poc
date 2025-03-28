@@ -1,7 +1,8 @@
 # Golang Cryptography Report Tooling
 
 Make it easier to detect and document cryptographic usage in a Golang project
-by reporting potential cryptographic functions.
+by reporting potential cryptographic functions. Reports are produced in
+[CycloneDX](https://cyclonedx.org/) format.
 
 This prototype reports code that accesses functions from the
 [crypto](https://pkg.go.dev/crypto) and
@@ -16,8 +17,21 @@ $ go build -o gocryptocheck main.go
 Run the tool on a Golang project repository:
 
 ```console
-$ ../gocryptocheck/gocryptocheck ./...
-/home/lbragstad/go/src/github.com/rhmdnd/compliance-operator/pkg/utils/nameutils.go:23:12: cryptographic usage detected: crypto/sha1.New without CRYPTO-USAGE comment. Please add a comment of the form `CRYPTO-USAGE: <reason>` explaining why it is used.
+$ ../gocryptocheck-poc/gocryptocheck ./...                                                     
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "version": 1,
+  "components": [
+    {
+      "type": "library",
+      "name": "crypto/sha1.New",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/utils/nameutils.go",
+      "line": 23
+    }
+  ]
+}
 ```
 
 Add a comment describing the usage:
@@ -43,8 +57,21 @@ index b4691f44..92cfc2a6 100644
 Run the tool again:
 
 ```console
-$ ../gocryptocheck/gocryptocheck ./...
-/home/lbragstad/go/src/github.com/rhmdnd/compliance-operator/pkg/utils/nameutils.go:23:12: cryptographic usage detected: crypto/sha1.New documented with CRYPTO-USAGE: SHA1 is only used to hash a given string so it can be safely shortened. It's not being used to protect sensitive data.
+$ ../gocryptocheck-poc/gocryptocheck ./...
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "version": 1,
+  "components": [
+    {
+      "type": "library",
+      "name": "crypto/sha1.New",
+      "description": "Documented: CRYPTO-USAGE: SHA1 is only used to hash a given string so it can be safely shortened. It's not being used to protect sensitive data.",
+      "file": "pkg/utils/nameutils.go",
+      "line": 23
+    }
+  ]
+}
 ```
 
 This prototype was generated with the help of ChatGPT `o1-mini-high` with the intent of sussing out viability of this approach.
