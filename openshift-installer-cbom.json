@@ -1,0 +1,196 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "version": 1,
+  "components": [
+    {
+      "type": "library",
+      "name": "crypto/sha256.New",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/agent/image/cache.go",
+      "line": 167
+    },
+    {
+      "type": "library",
+      "name": "crypto/sha256.New",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/agent/image/oc.go",
+      "line": 251
+    },
+    {
+      "type": "library",
+      "name": "crypto/rand.Int",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/ignition/bootstrap/baremetal/ironic_creds.go",
+      "line": 42
+    },
+    {
+      "type": "library",
+      "name": "crypto/rand.Int",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/password/password.go",
+      "line": 53
+    },
+    {
+      "type": "library",
+      "name": "crypto/rand.Int",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/password/password.go",
+      "line": 62
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/bcrypt.GenerateFromPassword",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/password/password.go",
+      "line": 77
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh.NewPublicKey",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/tls/bootstrapsshkeypair.go",
+      "line": 46
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh.MarshalAuthorizedKey",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/tls/bootstrapsshkeypair.go",
+      "line": 52
+    },
+    {
+      "type": "library",
+      "name": "crypto/rsa.GenerateKey",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/tls/tls.go",
+      "line": 54
+    },
+    {
+      "type": "library",
+      "name": "crypto/rand.Int",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/tls/tls.go",
+      "line": 64
+    },
+    {
+      "type": "library",
+      "name": "crypto/rand.Int",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/tls/tls.go",
+      "line": 101
+    },
+    {
+      "type": "library",
+      "name": "crypto/sha1.Sum",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/asset/tls/tls.go",
+      "line": 148
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh/agent.NewClient",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/gather/ssh/agent.go",
+      "line": 20
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh/agent.NewKeyring",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/gather/ssh/agent.go",
+      "line": 35
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh.Dial",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/gather/ssh/ssh.go",
+      "line": 28
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh.PublicKeysCallback",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/gather/ssh/ssh.go",
+      "line": 34
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh.InsecureIgnoreHostKey",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/gather/ssh/ssh.go",
+      "line": 36
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh/agent.ForwardToAgent",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/gather/ssh/ssh.go",
+      "line": 47
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh/agent.RequestAgentForwarding",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/gather/ssh/ssh.go",
+      "line": 60
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh.ParseRawPrivateKey",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/gather/ssh/ssh.go",
+      "line": 131
+    },
+    {
+      "type": "library",
+      "name": "crypto/sha256.New",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/tfvars/internal/cache/cache.go",
+      "line": 144
+    },
+    {
+      "type": "library",
+      "name": "crypto/md5.Sum",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/types/gcp/clouduid.go",
+      "line": 11
+    },
+    {
+      "type": "library",
+      "name": "crypto/rand.Int",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/types/powervs/defaults/platform.go",
+      "line": 20
+    },
+    {
+      "type": "library",
+      "name": "crypto/rand.Int",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/types/powervs/validation/platform_test.go",
+      "line": 20
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh.ParseAuthorizedKey",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/types/validation/installconfig.go",
+      "line": 979
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto/ssh.ParseAuthorizedKey",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "pkg/validate/validate.go",
+      "line": 191
+    },
+    {
+      "type": "library",
+      "name": "crypto/sha256.New",
+      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "file": "terraform/providers/vsphereprivate/resource_vsphereprivate_import_ova.go",
+      "line": 345
+    }
+  ]
+}

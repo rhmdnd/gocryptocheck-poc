@@ -1,0 +1,14 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "version": 1,
+  "components": [
+    {
+      "type": "library",
+      "name": "crypto/sha1.New",
+      "description": "Documented: CRYPTO-USAGE: SHA1 is only used to hash a given string so it can be safely shortened. It's not being used to protect sensitive data.",
+      "file": "pkg/utils/nameutils.go",
+      "line": 23
+    }
+  ]
+}
