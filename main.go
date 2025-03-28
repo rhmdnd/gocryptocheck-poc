@@ -2,12 +2,16 @@
 package main
 
 import (
+	"encoding/json"
+	"flag"
+	"fmt"
 	"go/ast"
-	"go/types"
+	"go/parser"
+	"go/token"
+	"log"
+	"os"
+	"path/filepath"
 	"strings"
-
-	"golang.org/x/tools/go/analysis"
-	"golang.org/x/tools/go/analysis/singlechecker"
 )
 
 // cryptoPackages lists known cryptographic package identifiers.
@@ -40,98 +44,185 @@ func isCryptoPackage(pkgPath string) bool {
 	return false
 }
 
-// Analyzer defines the gocryptocheck analyzer.
-var Analyzer = &analysis.Analyzer{
-	Name: "gocryptocheck",
-	Doc:  "reports cryptographic usage that lacks proper CRYPTO-USAGE comments",
-	Run:  run,
+// CryptoUsage represents one instance of cryptographic usage.
+type CryptoUsage struct {
+	Module     string `json:"module"`
+	Function   string `json:"function"`
+	File       string `json:"file"`
+	Line       int    `json:"line"`
+	Documented bool   `json:"documented"`
+	Reason     string `json:"reason,omitempty"`
 }
 
-// run is the entry point of the analyzer.
-func run(pass *analysis.Pass) (interface{}, error) {
-	for _, file := range pass.Files {
-		// Traverse the AST of the file.
-		ast.Inspect(file, func(n ast.Node) bool {
-			call, ok := n.(*ast.CallExpr)
-			if !ok {
-				return true
-			}
-			// Try to determine the function being called.
-			var funObj types.Object
-			switch fun := call.Fun.(type) {
-			case *ast.SelectorExpr:
-				funObj = pass.TypesInfo.ObjectOf(fun.Sel)
-			case *ast.Ident:
-				funObj = pass.TypesInfo.ObjectOf(fun)
-			default:
-				return true
-			}
-			if funObj == nil {
-				return true
-			}
-			pkg := funObj.Pkg()
-			if pkg == nil {
-				return true
-			}
-			// Check if the function belongs to one of our known cryptographic packages.
-			if !isCryptoPackage(pkg.Path()) {
-				return true
-			}
+// CycloneDX BOM structure.
+type Bom struct {
+	BomFormat   string      `json:"bomFormat"`
+	SpecVersion string      `json:"specVersion"`
+	Version     int         `json:"version"`
+	Components  []Component `json:"components"`
+}
 
-			// Capture module and function name.
-			cryptoModule := pkg.Path()
-			cryptoFunc := funObj.Name()
+// Component represents a component entry in the BOM.
+type Component struct {
+	Type        string `json:"type"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	File        string `json:"file"`
+	Line        int    `json:"line"`
+}
 
-			// Check for an accompanying CRYPTO-USAGE comment.
-			documented, reason := isDocumented(pass, file, call)
-			if documented {
-				// Report documented usage including the provided rationale.
-				pass.Report(analysis.Diagnostic{
-					Pos: call.Pos(),
-					End: call.End(),
-					Message: "cryptographic usage detected: " + cryptoModule + "." + cryptoFunc +
-						" documented with CRYPTO-USAGE: " + reason,
-				})
-			} else {
-				// Report missing documentation.
-				pass.Report(analysis.Diagnostic{
-					Pos: call.Pos(),
-					End: call.End(),
-					Message: "cryptographic usage detected: " + cryptoModule + "." + cryptoFunc +
-						" without CRYPTO-USAGE comment. Please add a comment of the form `CRYPTO-USAGE: <reason>` explaining why it is used.",
-				})
-			}
-			return true
+func main() {
+	// Directory to scan (defaults to current directory).
+	dir := flag.String("dir", ".", "directory to scan for Go files")
+	flag.Parse()
+
+	usages, err := scanDirectory(*dir)
+	if err != nil {
+		log.Fatalf("Error scanning directory: %v", err)
+	}
+
+	// Convert each cryptographic usage to a CycloneDX BOM component.
+	var components []Component
+	for _, usage := range usages {
+		compName := usage.Module + "." + usage.Function
+		desc := ""
+		if usage.Documented {
+			desc = "Documented: CRYPTO-USAGE: " + usage.Reason
+		} else {
+			desc = "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: <reason>`."
+		}
+		components = append(components, Component{
+			Type:        "library",
+			Name:        compName,
+			Description: desc,
+			File:        usage.File,
+			Line:        usage.Line,
 		})
 	}
-	return nil, nil
+
+	// Build the BOM.
+	bom := Bom{
+		BomFormat:   "CycloneDX",
+		SpecVersion: "1.4",
+		Version:     1,
+		Components:  components,
+	}
+
+	out, err := json.MarshalIndent(bom, "", "  ")
+	if err != nil {
+		log.Fatalf("Error marshaling BOM: %v", err)
+	}
+	fmt.Println(string(out))
 }
 
-// isDocumented checks whether there is a CRYPTO-USAGE comment near the node.
-func isDocumented(pass *analysis.Pass, file *ast.File, node ast.Node) (bool, string) {
-	callPos := pass.Fset.Position(node.Pos())
+// scanDirectory recursively scans the given directory for Go source files and returns any cryptographic usages found.
+func scanDirectory(dir string) ([]CryptoUsage, error) {
+	var usages []CryptoUsage
 
-	// Iterate over all comment groups in the file.
+	fset := token.NewFileSet()
+	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		// Skip vendor and only focus on cryptographic usage within the project
+		if info.IsDir() && info.Name() == "vendor" {
+			return filepath.SkipDir
+		}
+
+		// Only process .go files.
+		if info.IsDir() || !strings.HasSuffix(path, ".go") {
+			return nil
+		}
+		file, err := parser.ParseFile(fset, path, nil, parser.ParseComments)
+		if err != nil {
+			return err
+		}
+		fileUsages := scanFile(fset, file, path)
+		usages = append(usages, fileUsages...)
+		return nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	return usages, nil
+}
+
+// scanFile inspects a parsed file for call expressions from cryptographic packages.
+func scanFile(fset *token.FileSet, file *ast.File, filename string) []CryptoUsage {
+	var usages []CryptoUsage
+
+	ast.Inspect(file, func(n ast.Node) bool {
+		// We're interested in call expressions.
+		call, ok := n.(*ast.CallExpr)
+		if !ok {
+			return true
+		}
+
+		// We expect cryptographic calls to appear as selector expressions (e.g. pkg.Func).
+		sel, ok := call.Fun.(*ast.SelectorExpr)
+		if !ok {
+			return true
+		}
+
+		// The receiver should be an identifier matching one of the imported packages.
+		ident, ok := sel.X.(*ast.Ident)
+		if !ok {
+			return true
+		}
+
+		// Determine the package path from the file's imports.
+		var pkgPath string
+		for _, imp := range file.Imports {
+			var impName string
+			// If the import has an explicit name use it.
+			if imp.Name != nil {
+				impName = imp.Name.Name
+			} else {
+				// Otherwise use the default name: the base element of the path.
+				impPath := strings.Trim(imp.Path.Value, "\"")
+				parts := strings.Split(impPath, "/")
+				impName = parts[len(parts)-1]
+			}
+			if ident.Name == impName {
+				pkgPath = strings.Trim(imp.Path.Value, "\"")
+				break
+			}
+		}
+		if pkgPath == "" || !isCryptoPackage(pkgPath) {
+			return true
+		}
+
+		pos := fset.Position(call.Pos())
+		documented, reason := findCryptoUsageComment(file, call, fset)
+		usage := CryptoUsage{
+			Module:     pkgPath,
+			Function:   sel.Sel.Name,
+			File:       filename,
+			Line:       pos.Line,
+			Documented: documented,
+			Reason:     reason,
+		}
+		usages = append(usages, usage)
+		return true
+	})
+	return usages
+}
+
+// findCryptoUsageComment looks for a CRYPTO-USAGE comment near the given AST node.
+func findCryptoUsageComment(file *ast.File, node ast.Node, fset *token.FileSet) (bool, string) {
+	nodePos := fset.Position(node.Pos())
 	for _, cg := range file.Comments {
-		cgPos := pass.Fset.Position(cg.End())
-		// Consider comment groups that end on the same line or on the immediately preceding line.
-		if callPos.Line-cgPos.Line <= 1 && callPos.Line-cgPos.Line >= 0 {
-			for _, c := range cg.List {
-				if strings.Contains(c.Text, "CRYPTO-USAGE:") {
-					// Extract the reason after the prefix.
-					parts := strings.SplitN(c.Text, "CRYPTO-USAGE:", 2)
-					reason := strings.TrimSpace(parts[1])
-					return true, reason
+		cgPos := fset.Position(cg.End())
+		// Look for comments ending on the same line or immediately before the node.
+		if nodePos.Line-cgPos.Line <= 1 && nodePos.Line-cgPos.Line >= 0 {
+			for _, comment := range cg.List {
+				if strings.Contains(comment.Text, "CRYPTO-USAGE:") {
+					parts := strings.SplitN(comment.Text, "CRYPTO-USAGE:", 2)
+					return true, strings.TrimSpace(parts[1])
 				}
 			}
 		}
 	}
 	return false, ""
 }
-
-func main() {
-	// Use singlechecker so this analyzer can be run as a standalone tool
-	// or integrated into golangci-lint.
-	singlechecker.Main(Analyzer)
-}
-
