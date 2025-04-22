@@ -17,7 +17,6 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
-	"time"
 )
 
 // cryptoPackages lists known cryptographic package identifiers.
@@ -89,7 +88,7 @@ type Component struct {
 }
 
 func main() {
-	outputFormat := flag.String("format", "cyclonedx", "Output format: cyclonedx, spdx, or text")
+	outputFormat := flag.String("format", "cyclonedx", "Output format: cyclonedx")
 	flag.Func("excludeDir", "directory name to exclude from processing (can repeat)", func(val string) error {
 		excludeDirs = append(excludeDirs, val)
 		return nil
@@ -160,10 +159,6 @@ func main() {
 	switch *outputFormat {
 	case "cyclonedx":
 		outputCycloneDX(allUsages)
-	case "spdx":
-		outputSpdx(allUsages)
-	case "text":
-		outputText(allUsages)
 	default:
 		log.Fatalf("Unknown output format: %s", *outputFormat)
 	}
@@ -554,71 +549,4 @@ func outputCycloneDX(usages []CryptoUsage) {
 		log.Fatalf("Error marshaling BOM: %v", err)
 	}
 	fmt.Println(string(out))
-}
-
-// outputText outputs a plain text report.
-// It prints the rationale first and then each metadata key-value pair on separate lines.
-func outputText(usages []CryptoUsage) {
-	for _, usage := range usages {
-		docStatus := "Undocumented"
-		if usage.Documented {
-			docStatus = "Documented: " + usage.Reason
-		}
-		fmt.Printf("%s:%d: %s.%s - %s\n", usage.File, usage.Line, usage.Module, usage.Function, docStatus)
-		// Print additional metadata if present.
-		if len(usage.Metadata) > 0 {
-			fmt.Println("  Additional details:")
-			for key, value := range usage.Metadata {
-				fmt.Printf("    %s: %s\n", key, value)
-			}
-		}
-	}
-}
-
-// outputSpdx outputs an SPDX document in tag‑value format.
-// The metadata is output as additional package details after the main package description.
-func outputSpdx(usages []CryptoUsage) {
-	created := time.Now().Format(time.RFC3339)
-	namespace := fmt.Sprintf("http://spdx.org/spdxdocs/gocryptocheck-%d", time.Now().Unix())
-	fmt.Println("SPDXVersion: SPDX-2.2")
-	fmt.Println("DataLicense: CC0-1.0")
-	fmt.Println("SPDXID: SPDXRef-DOCUMENT")
-	fmt.Println("DocumentName: gocryptocheck Cryptographic Usage SPDX Report")
-	fmt.Println("DocumentNamespace: " + namespace)
-	fmt.Println("Creator: Tool: gocryptocheck")
-	fmt.Println("Created: " + created)
-	fmt.Println()
-	// For each cryptographic usage, output a Package entry.
-	for _, usage := range usages {
-		packageName := usage.Module + "." + usage.Function
-		// Sanitize SPDXID by replacing slashes or spaces.
-		spdxID := fmt.Sprintf("SPDXRef-%s-%d", strings.ReplaceAll(packageName, "/", "."), usage.Line)
-		desc := ""
-		if usage.Documented {
-			desc = usage.Reason
-		} else {
-			desc = "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: <rationale>[; key: value...]`."
-		}
-		fmt.Printf("##### Cryptographic usage found in %s at line %d\n", usage.File, usage.Line)
-		fmt.Println("PackageName: " + packageName)
-		fmt.Println("SPDXID: " + spdxID)
-		for key, _ := range usage.Metadata {
-			if key == "moduleVersion" {
-				fmt.Println("PackageVersion: " + usage.Metadata[key])
-			}
-		}
-		fmt.Println("PackageDownloadLocation: NOASSERTION")
-		fmt.Println("PackageDescription: " + desc)
-		// Output additional metadata as separate lines.
-		if len(usage.Metadata) > 0 {
-			for key, value := range usage.Metadata {
-				// We've already documented this above
-				if key == "moduleVersion" {
-					continue
-				}
-				fmt.Printf("PackageComment: %s: %s\n", key, value)
-			}
-		}
-		fmt.Println()
-	}
 }
