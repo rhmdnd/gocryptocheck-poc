@@ -4,193 +4,356 @@
   "version": 1,
   "components": [
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to produce a checksum and validate cached files.",
       "file": "pkg/asset/agent/image/cache.go",
-      "line": 167
+      "line": 168,
+      "properties": {
+        "algorithm": "SHA-256",
+        "callingFunction": "cacheFile",
+        "cryptographyType": "Message Digest",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to validate cached installer files and inform the user if the installer is outdated.",
       "file": "pkg/asset/agent/image/oc.go",
-      "line": 251
+      "line": 252,
+      "properties": {
+        "algorithm": "SHA-256",
+        "callingFunction": "verifyCacheFile",
+        "cryptographyType": "Message Digest",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/rand.Int",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to randomly select characters for passwords.",
       "file": "pkg/asset/ignition/bootstrap/baremetal/ironic_creds.go",
-      "line": 42
+      "line": 43,
+      "properties": {
+        "algorithm": "CSPRNG",
+        "callingFunction": "generateRandomPassword",
+        "cryptographyType": "Random Number Generation",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/rand.Int",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to select random characters for passwords.",
       "file": "pkg/asset/password/password.go",
-      "line": 53
+      "line": 54,
+      "properties": {
+        "algorithm": "CSPRNG",
+        "callingFunction": "generateRandomPasswordHash",
+        "cryptographyType": "Random Number Generation",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/rand.Int",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to select random characters for passwords.",
       "file": "pkg/asset/password/password.go",
-      "line": 62
+      "line": 64,
+      "properties": {
+        "algorithm": "CSPRNG",
+        "callingFunction": "generateRandomPasswordHash",
+        "cryptographyType": "Random Number Generation",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/bcrypt.GenerateFromPassword",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Generate a hash of a randomly generated password.",
       "file": "pkg/asset/password/password.go",
-      "line": 77
+      "line": 80,
+      "properties": {
+        "algorithm": "BCRYPT",
+        "callingFunction": "generateRandomPasswordHash",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh.NewPublicKey",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to save a newly generated ssh keypair to an authorized_keys file.",
       "file": "pkg/asset/tls/bootstrapsshkeypair.go",
-      "line": 46
+      "line": 47,
+      "properties": {
+        "algorithm": "SSH",
+        "callingFunction": "Generate",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh.MarshalAuthorizedKey",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to save a newly generated ssh keypair to an authorized_keys file.",
       "file": "pkg/asset/tls/bootstrapsshkeypair.go",
-      "line": 52
+      "line": 54,
+      "properties": {
+        "algorithm": "SSH",
+        "callingFunction": "Generate",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/rsa.GenerateKey",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to generate a random SSH private key",
       "file": "pkg/asset/tls/tls.go",
-      "line": 54
+      "line": 55,
+      "properties": {
+        "KeyStrength": "2048",
+        "algorithm": "RSA",
+        "callingFunction": "PrivateKey",
+        "cryptographyType": "Asymmetric Key Generation",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/rand.Int",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to generate a serial number for a self-signed certificate.",
       "file": "pkg/asset/tls/tls.go",
-      "line": 64
+      "line": 66,
+      "properties": {
+        "algorithm": "CSPRNG",
+        "callingFunction": "SelfSignedCertificate",
+        "cryptographyType": "Random Number Generation",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/rand.Int",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to generate a serial number for a signed certificate.",
       "file": "pkg/asset/tls/tls.go",
-      "line": 101
+      "line": 104,
+      "properties": {
+        "algorithm": "CSPRNG",
+        "callingFunction": "SignedCertificate",
+        "cryptographyType": "Random Number Generation",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/sha1.Sum",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to generate a hash of an SSH public key.",
       "file": "pkg/asset/tls/tls.go",
-      "line": 148
+      "line": 152,
+      "properties": {
+        "algorithm": "SHA-1",
+        "callingFunction": "generateSubjectKeyID",
+        "cryptographyType": "Message Digest",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh/agent.NewClient",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to establish SSH connections.",
       "file": "pkg/gather/ssh/agent.go",
-      "line": 20
+      "line": 21,
+      "properties": {
+        "algorithm": "AGENT",
+        "callingFunction": "getAgent",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh/agent.NewKeyring",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to store keys in memory for SSH sessions.",
       "file": "pkg/gather/ssh/agent.go",
-      "line": 35
+      "line": 37,
+      "properties": {
+        "algorithm": "AGENT",
+        "callingFunction": "newAgent",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh.Dial",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to create a new SSH client which can be used to SSH to address using user and the keys.",
       "file": "pkg/gather/ssh/ssh.go",
-      "line": 28
+      "line": 29,
+      "properties": {
+        "algorithm": "SSH",
+        "callingFunction": "NewClient",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh.PublicKeysCallback",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Use a callback rather than PublicKeys",
       "file": "pkg/gather/ssh/ssh.go",
-      "line": 34
+      "line": 35,
+      "properties": {
+        "algorithm": "SSH",
+        "callingFunction": "NewClient",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh.InsecureIgnoreHostKey",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to ignore insecure hosts.",
       "file": "pkg/gather/ssh/ssh.go",
-      "line": 36
+      "line": 38,
+      "properties": {
+        "algorithm": "SSH",
+        "callingFunction": "NewClient",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh/agent.ForwardToAgent",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used for routing authentication requests to the correct keyring.",
       "file": "pkg/gather/ssh/ssh.go",
-      "line": 47
+      "line": 50,
+      "properties": {
+        "algorithm": "AGENT",
+        "callingFunction": "NewClient",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh/agent.RequestAgentForwarding",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to setup agent forwarding for the SSH session.",
       "file": "pkg/gather/ssh/ssh.go",
-      "line": 60
+      "line": 64,
+      "properties": {
+        "algorithm": "AGENT",
+        "callingFunction": "Run",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh.ParseRawPrivateKey",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to parse private key data after reading it from a file on disk.",
       "file": "pkg/gather/ssh/ssh.go",
-      "line": 131
+      "line": 136,
+      "properties": {
+        "algorithm": "SSH",
+        "callingFunction": "LoadPrivateSSHKeys",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to hash files on disk for cache logic.",
       "file": "pkg/tfvars/internal/cache/cache.go",
-      "line": 144
+      "line": 145,
+      "properties": {
+        "algorithm": "SHA-256",
+        "callingFunction": "cacheFile",
+        "cryptographyType": "Message Digest",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/md5.Sum",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to generate an ID for the Cloud Controller bashed on a hash of the infrastructure ID.",
       "file": "pkg/types/gcp/clouduid.go",
-      "line": 11
+      "line": 12,
+      "properties": {
+        "algorithm": "MD5",
+        "callingFunction": "CloudControllerUID",
+        "cryptographyType": "Message Digest",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/rand.Int",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to generate a random number for the third octet of the network ID.",
       "file": "pkg/types/powervs/defaults/platform.go",
-      "line": 20
+      "line": 21,
+      "properties": {
+        "algorithm": "CSPRNG",
+        "callingFunction": "SetPlatformDefaults",
+        "cryptographyType": "Random Number Generation",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/rand.Int",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to generate a random number, which is used to get a random zone name for testing.",
       "file": "pkg/types/powervs/validation/platform_test.go",
-      "line": 20
+      "line": 21,
+      "properties": {
+        "algorithm": "CSPRNG",
+        "callingFunction": "genRandNum",
+        "cryptographyType": "Random Number Generation",
+        "moduleVersion": "go1.23.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh.ParseAuthorizedKey",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Reads public SSH keys to perform additional validation that ensure the key is compliant with FIPS compatible key types.",
       "file": "pkg/types/validation/installconfig.go",
-      "line": 979
+      "line": 980,
+      "properties": {
+        "algorithm": "SSH",
+        "callingFunction": "validateFIPSconfig",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "golang.org/x/crypto/ssh.ParseAuthorizedKey",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Helper function that relies on ssh.ParseAuthorizedKey() to validate the public SSH key, and returns an error if the key is invalid.",
       "file": "pkg/validate/validate.go",
-      "line": 191
+      "line": 192,
+      "properties": {
+        "algorithm": "SSH",
+        "callingFunction": "SSHPublicKey",
+        "cryptographyType": "Unknown",
+        "moduleVersion": "v0.1.0"
+      }
     },
     {
-      "type": "library",
+      "type": "module",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `CRYPTO-USAGE: \u003creason\u003e`.",
+      "description": "Documented: Used to hash the contents of corrupt .ovf files. The hash is used in error messages.",
       "file": "terraform/providers/vsphereprivate/resource_vsphereprivate_import_ova.go",
-      "line": 345
+      "line": 346,
+      "properties": {
+        "algorithm": "SHA-256",
+        "callingFunction": "resourceVSpherePrivateImportOvaCreate",
+        "cryptographyType": "Message Digest",
+        "moduleVersion": "go1.23.0"
+      }
     }
   ]
 }
