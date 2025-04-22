@@ -68,6 +68,11 @@ type CryptoUsage struct {
 	Metadata   map[string]string `json:"metadata,omitempty"`
 }
 
+type Property struct {
+	Name  string      `json:"name"`
+	Value interface{} `json:"value"`
+}
+
 // CycloneDX BOM structure.
 type Bom struct {
 	BomFormat   string      `json:"bomFormat"`
@@ -77,12 +82,10 @@ type Bom struct {
 }
 
 type Component struct {
-	Type        string            `json:"type"`
-	Name        string            `json:"name"`
-	Description string            `json:"description"`
-	File        string            `json:"file"`
-	Line        int               `json:"line"`
-	Properties  map[string]string `json:"properties,omitempty"`
+	Type             string                 `json:"type"`
+	Name             string                 `json:"name"`
+	CryptoProperties map[string]interface{} `json:"cryptoProperties,omitempty"`
+	Properties       []Property             `json:"properties,omitempty"`
 }
 
 func main() {
@@ -235,61 +238,92 @@ func resolveModuleVersion(pkgPath string) string {
 	return ver
 }
 
-// helper: map pkg+func → (algorithm name, cryptography type)
-func getAlgType(pkgPath, funcName string) (string, string) {
+// helper: map pkg+func → (algorithm name, primitive)
+func getAlgorithmPropsByFunction(pkgPath, funcName string) map[string]interface{} {
+	algoProps := make(map[string]interface{})
 	switch pkgPath {
 	case "crypto/sha1":
-		return "SHA-1", "Message Digest"
+		algoProps["primitive"] = "hash"
+		algoProps["cryptoFunctions"] = []string{"digest"}
 	case "crypto/sha256":
-		return "SHA-256", "Message Digest"
+		algoProps["primitive"] = "hash"
+		algoProps["cryptoFunctions"] = []string{"digest"}
 	case "crypto/sha512":
-		return "SHA-512", "Message Digest"
+		algoProps["primitive"] = "hash"
+		algoProps["cryptoFunctions"] = []string{"digest"}
 	case "crypto/md5":
-		return "MD5", "Message Digest"
+		algoProps["primitive"] = "hash"
+		algoProps["cryptoFunctions"] = []string{"digest"}
 	case "crypto/aes":
-		return "AES", "Symmetric Encryption"
+		algoProps["primitive"] = "block-cipher"
+		algoProps["cryptoFunctions"] = []string{"encrypt", "decrypt"}
 	case "crypto/des":
-		return "DES", "Symmetric Encryption"
+		algoProps["primitive"] = "block-cipher"
+		algoProps["cryptoFunctions"] = []string{"encrypt", "decrypt"}
 	case "crypto/hmac":
-		return "HMAC", "Message Authentication Code"
+		algoProps["primitive"] = "mac"
+		algoProps["cryptoFunctions"] = []string{"sign"}
 	case "crypto/rand":
-		return "CSPRNG", "Random Number Generation"
+		algoProps["primitive"] = "drbg"
 	case "crypto/rsa":
 		switch funcName {
 		case "GenerateKey":
-			return "RSA", "Asymmetric Key Generation"
+			algoProps["primitive"] = "pke"
+			algoProps["cryptoFunctions"] = []string{"keygen"}
 		case "EncryptOAEP", "DecryptOAEP":
-			return "RSA-OAEP", "Asymmetric Encryption/Decryption"
+			algoProps["primitive"] = "pke"
+			algoProps["cryptoFunctions"] = []string{"encrypt", "decrypt"}
 		case "SignPSS":
-			return "RSA-PSS", "Digital Signature"
+			algoProps["primitive"] = "signature"
+			algoProps["cryptoFunctions"] = []string{"sign"}
 		case "SignPKCS1v15", "VerifyPKCS1v15":
-			return "RSA", "Digital Signature"
+			algoProps["primitive"] = "signature"
+			algoProps["cryptoFunctions"] = []string{"sign"}
+		default:
+			algoProps["primitive"] = "signature"
+			algoProps["cryptoFunctions"] = []string{"sign"}
 		}
-		return "RSA", "Asymmetric Cryptography"
 	case "crypto/ecdsa":
 		switch funcName {
 		case "GenerateKey":
-			return "ECDSA", "Asymmetric Key Generation"
+			// Label as other since GenerateKey a key generation
+			// algorithm and doesn't fall cleanly into any of the
+			// existing CycloneDX primitive types.
+			algoProps["primitive"] = "other"
+			algoProps["cryptoFunctions"] = []string{"keygen"}
 		case "Sign":
-			return "ECDSA", "Digital Signature"
+			algoProps["primitive"] = "signature"
+			algoProps["cryptoFunctions"] = []string{"sign"}
 		case "Verify":
-			return "ECDSA", "Signature Verification"
+			algoProps["primitive"] = "signature"
+			algoProps["cryptoFunctions"] = []string{"sign"}
+		default:
+			algoProps["primitive"] = "signature"
+			algoProps["cryptoFunctions"] = []string{"sign"}
 		}
-		return "ECDSA", "Asymmetric Cryptography"
 	case "crypto/ed25519":
 		switch funcName {
 		case "GenerateKey":
-			return "Ed25519", "Asymmetric Key Generation"
+			// Label as other since GenerateKey a key generation
+			// algorithm and doesn't fall cleanly into any of the
+			// existing CycloneDX primitive types.
+			algoProps["primitive"] = "other"
+			algoProps["cryptoFunctions"] = []string{"keygen"}
 		case "Sign":
-			return "Ed25519", "Digital Signature"
+			algoProps["primitive"] = "signature"
+			algoProps["cryptoFunctions"] = []string{"sign"}
 		case "Verify":
-			return "Ed25519", "Signature Verification"
+			algoProps["primitive"] = "signature"
+			algoProps["cryptoFunctions"] = []string{"sign"}
+		default:
+			algoProps["primitive"] = "signature"
+			algoProps["cryptoFunctions"] = []string{"sign"}
 		}
-		return "Ed25519", "Asymmetric Cryptography"
+	default:
+		algoProps["primitive"] = "unknown"
+		algoProps["cryptoFunctions"] = []string{"unknown"}
 	}
-	// fallback: derive a name from the last path segment
-	parts := strings.Split(pkgPath, "/")
-	return strings.ToUpper(parts[len(parts)-1]), "Unknown"
+	return algoProps
 }
 
 // scanDirectory recursively scans a directory for Go files, skipping vendor directories.
@@ -387,9 +421,6 @@ func scanFilePath(fset *token.FileSet, path string) ([]CryptoUsage, error) {
 			metadata["moduleVersion"] = resolveModuleVersion(pkgPath)
 
 			// inject algorithm info
-			alg, ctype := getAlgType(pkgPath, sel.Sel.Name)
-			metadata["algorithm"] = alg
-			metadata["cryptographyType"] = ctype
 			metadata["callingFunction"] = caller
 
 			usages = append(usages, CryptoUsage{
@@ -454,38 +485,69 @@ func findCryptoUsageComment(file *ast.File, node ast.Node, fset *token.FileSet) 
 // outputCycloneDX outputs a CycloneDX BOM in JSON format.
 // The metadata (key-value pairs) appear as additional properties.
 func outputCycloneDX(usages []CryptoUsage) {
-	var components []Component
+	// build the BOM
+	bom := Bom{
+		BomFormat:   "CycloneDX",
+		SpecVersion: "1.6", // bump to 1.6
+		Version:     1,
+	}
 	for _, usage := range usages {
 		compName := usage.Module + "." + usage.Function
 		desc := ""
 		if usage.Documented {
-			desc = "Documented: " + usage.Reason
+			desc = usage.Reason
 		} else {
 			desc = "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: <rationale>[; key: value...]`."
 		}
+
+		// Assemble cryptoProperties per 1.6 CycloneDX scheme
+		cryptoProps := make(map[string]interface{}, len(usage.Metadata)+1)
+		cryptoProps["assetType"] = "algorithm"
+		protocolTypes := []string{"tls", "ssh", "ipsec", "ike", "sstp", "wpa"}
+		for _, pt := range protocolTypes {
+			if contains := strings.Contains(compName, pt); contains {
+				cryptoProps["assetType"] = "protocol"
+				break
+			}
+			// otherwise, we'll just assume algorithm
+			cryptoProps["assetType"] = "algorithm"
+		}
+
+		// Put the caller function in the component properties since
+		// there isn't a good place for it anywhere in the
+		// cryptoProperties, according to the CycloneDX 1.6 schema.
+		compProps := []Property{
+			{Name: "callingFunction", Value: usage.Caller},
+			{Name: "file", Value: usage.File},
+			{Name: "line", Value: usage.Line},
+			{Name: "rationale", Value: desc},
+		}
+
+		// algorithmProperties grouping
+		if cryptoProps["assetType"] == "algorithm" {
+			algoProps := getAlgorithmPropsByFunction(usage.Module, usage.Function)
+			cryptoProps["algorithmProperties"] = algoProps
+		}
+
+		for key, value := range usage.Metadata {
+			substrings := strings.Split(key, "-")
+			if len(substrings) > 2 {
+				// fail here
+			}
+			// extend this to include setting additional attributes
+			// for cryptoProperties or algorithmProperties
+			if substrings[0] == "properties" {
+				compProps = append(compProps, Property{Name: substrings[1], Value: value})
+			}
+		}
+
 		component := Component{
-			Type:        "module",
-			Name:        compName,
-			Description: desc,
-			File:        usage.File,
-			Line:        usage.Line,
+			Type:             "cryptographic-asset",
+			Name:             compName,
+			CryptoProperties: cryptoProps,
+			Properties:       compProps,
 		}
-
-		// Add metadata as separate properties if present.
-		props := make(map[string]string, len(usage.Metadata)+1)
-		props["callingFunction"] = usage.Caller
-		for k, v := range usage.Metadata {
-			props[k] = v
-		}
-
-		component.Properties = props
-		components = append(components, component)
-	}
-	bom := Bom{
-		BomFormat:   "CycloneDX",
-		SpecVersion: "1.4",
-		Version:     1,
-		Components:  components,
+		bom.Components = append(bom.Components, component)
 	}
 	out, err := json.MarshalIndent(bom, "", "  ")
 	if err != nil {
@@ -533,7 +595,7 @@ func outputSpdx(usages []CryptoUsage) {
 		spdxID := fmt.Sprintf("SPDXRef-%s-%d", strings.ReplaceAll(packageName, "/", "."), usage.Line)
 		desc := ""
 		if usage.Documented {
-			desc = "Documented: " + usage.Reason
+			desc = usage.Reason
 		} else {
 			desc = "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: <rationale>[; key: value...]`."
 		}
