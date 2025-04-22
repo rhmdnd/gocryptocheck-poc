@@ -1,1307 +1,3078 @@
 {
   "bomFormat": "CycloneDX",
-  "specVersion": "1.4",
+  "specVersion": "1.6",
   "version": 1,
   "components": [
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.New",
-      "description": "Documented: sha1.New() is only used here to hash a string so it's shorter",
-      "file": "pkg/utils/nameutils.go",
-      "line": 24,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "LengthName",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "LengthName"
+        },
+        {
+          "name": "file",
+          "value": "pkg/utils/nameutils.go"
+        },
+        {
+          "name": "line",
+          "value": 23
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/cloud.google.com/go/auth/credentials/internal/externalaccount/aws_provider.go",
-      "line": 393,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "getSha256",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "getSha256"
+        },
+        {
+          "name": "file",
+          "value": "vendor/cloud.google.com/go/auth/credentials/internal/externalaccount/aws_provider.go"
+        },
+        {
+          "name": "line",
+          "value": 393
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/hmac.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/cloud.google.com/go/auth/credentials/internal/externalaccount/aws_provider.go",
-      "line": 401,
-      "properties": {
-        "algorithm": "HMAC",
-        "callingFunction": "getHmacSha256",
-        "cryptographyType": "Message Authentication Code",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "mac"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "getHmacSha256"
+        },
+        {
+          "name": "file",
+          "value": "vendor/cloud.google.com/go/auth/credentials/internal/externalaccount/aws_provider.go"
+        },
+        {
+          "name": "line",
+          "value": 401
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/cloud.google.com/go/auth/internal/jwt/jwt.go",
-      "line": 124,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "EncodeJWS",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "EncodeJWS"
+        },
+        {
+          "name": "file",
+          "value": "vendor/cloud.google.com/go/auth/internal/jwt/jwt.go"
+        },
+        {
+          "name": "line",
+          "value": 124
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/cloud.google.com/go/auth/internal/jwt/jwt.go",
-      "line": 168,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "VerifyJWS",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "VerifyJWS"
+        },
+        {
+          "name": "file",
+          "value": "vendor/cloud.google.com/go/auth/internal/jwt/jwt.go"
+        },
+        {
+          "name": "line",
+          "value": 168
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rsa.VerifyPKCS1v15",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/cloud.google.com/go/auth/internal/jwt/jwt.go",
-      "line": 170,
-      "properties": {
-        "algorithm": "RSA",
-        "callingFunction": "VerifyJWS",
-        "cryptographyType": "Digital Signature",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "signature"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "VerifyJWS"
+        },
+        {
+          "name": "file",
+          "value": "vendor/cloud.google.com/go/auth/internal/jwt/jwt.go"
+        },
+        {
+          "name": "line",
+          "value": 170
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/pkcs12.ToPEM",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/Azure/azure-sdk-for-go/sdk/azidentity/client_certificate_credential.go",
-      "line": 165,
-      "properties": {
-        "algorithm": "PKCS12",
-        "callingFunction": "loadPKCS12Cert",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "loadPKCS12Cert"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/Azure/azure-sdk-for-go/sdk/azidentity/client_certificate_credential.go"
+        },
+        {
+          "name": "line",
+          "value": 165
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Read",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/Azure/azure-sdk-for-go/sdk/internal/uuid/uuid.go",
-      "line": 29,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "New",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "New"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/Azure/azure-sdk-for-go/sdk/internal/uuid/uuid.go"
+        },
+        {
+          "name": "line",
+          "value": 29
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.Sum",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens/accesstokens.go",
-      "line": 145,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "thumbprint",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "thumbprint"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/accesstokens/accesstokens.go"
+        },
+        {
+          "name": "line",
+          "value": 145
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority/authority.go",
-      "line": 598,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "AssertionHash",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "AssertionHash"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/AzureAD/microsoft-authentication-library-for-go/apps/internal/oauth/ops/authority/authority.go"
+        },
+        {
+          "name": "line",
+          "value": 598
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Read",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/AzureAD/microsoft-authentication-library-for-go/apps/public/public.go",
-      "line": 748,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "codeVerifier",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "codeVerifier"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/AzureAD/microsoft-authentication-library-for-go/apps/public/public.go"
+        },
+        {
+          "name": "line",
+          "value": 748
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.Sum256",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/AzureAD/microsoft-authentication-library-for-go/apps/public/public.go",
-      "line": 753,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "codeVerifier",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "codeVerifier"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/AzureAD/microsoft-authentication-library-for-go/apps/public/public.go"
+        },
+        {
+          "name": "line",
+          "value": 753
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/aws/aws-sdk-go/aws/credentials/ssocreds/provider.go",
-      "line": 149,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "getCachedFilePath",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "getCachedFilePath"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/aws/aws-sdk-go/aws/credentials/ssocreds/provider.go"
+        },
+        {
+          "name": "line",
+          "value": 149
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/aws/aws-sdk-go/aws/credentials/ssocreds/sso_cached_token.go",
-      "line": 31,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "StandardCachedTokenFilepath",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "StandardCachedTokenFilepath"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/aws/aws-sdk-go/aws/credentials/ssocreds/sso_cached_token.go"
+        },
+        {
+          "name": "line",
+          "value": 31
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/hmac.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/aws/aws-sdk-go/aws/signer/v4/v4.go",
-      "line": 756,
-      "properties": {
-        "algorithm": "HMAC",
-        "callingFunction": "hmacSHA256",
-        "cryptographyType": "Message Authentication Code",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "mac"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "hmacSHA256"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/aws/aws-sdk-go/aws/signer/v4/v4.go"
+        },
+        {
+          "name": "line",
+          "value": 756
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/aws/aws-sdk-go/aws/signer/v4/v4.go",
-      "line": 762,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "hashSHA256",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "hashSHA256"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/aws/aws-sdk-go/aws/signer/v4/v4.go"
+        },
+        {
+          "name": "line",
+          "value": 762
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/aws/aws-sdk-go/aws/signer/v4/v4.go",
-      "line": 768,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "makeSha256Reader",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "makeSha256Reader"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/aws/aws-sdk-go/aws/signer/v4/v4.go"
+        },
+        {
+          "name": "line",
+          "value": 768
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Read",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/aws/aws-sdk-go/private/protocol/idempotency.go",
-      "line": 57,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "SetIdempotencyToken",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "SetIdempotencyToken"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/aws/aws-sdk-go/private/protocol/idempotency.go"
+        },
+        {
+          "name": "line",
+          "value": 57
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/ecdsa.Verify",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/golang-jwt/jwt/v5/ecdsa.go",
-      "line": 83,
-      "properties": {
-        "algorithm": "ECDSA",
-        "callingFunction": "Verify",
-        "cryptographyType": "Signature Verification",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "signature"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Verify"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/golang-jwt/jwt/v5/ecdsa.go"
+        },
+        {
+          "name": "line",
+          "value": 83
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/ecdsa.Sign",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/golang-jwt/jwt/v5/ecdsa.go",
-      "line": 111,
-      "properties": {
-        "algorithm": "ECDSA",
-        "callingFunction": "Sign",
-        "cryptographyType": "Digital Signature",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "signature"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Sign"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/golang-jwt/jwt/v5/ecdsa.go"
+        },
+        {
+          "name": "line",
+          "value": 111
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/ed25519.Verify",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/golang-jwt/jwt/v5/ed25519.go",
-      "line": 49,
-      "properties": {
-        "algorithm": "Ed25519",
-        "callingFunction": "Verify",
-        "cryptographyType": "Signature Verification",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "signature"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Verify"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/golang-jwt/jwt/v5/ed25519.go"
+        },
+        {
+          "name": "line",
+          "value": 49
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/hmac.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/golang-jwt/jwt/v5/hmac.go",
-      "line": 73,
-      "properties": {
-        "algorithm": "HMAC",
-        "callingFunction": "Verify",
-        "cryptographyType": "Message Authentication Code",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "mac"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Verify"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/golang-jwt/jwt/v5/hmac.go"
+        },
+        {
+          "name": "line",
+          "value": 73
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/hmac.Equal",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/golang-jwt/jwt/v5/hmac.go",
-      "line": 75,
-      "properties": {
-        "algorithm": "HMAC",
-        "callingFunction": "Verify",
-        "cryptographyType": "Message Authentication Code",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "mac"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Verify"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/golang-jwt/jwt/v5/hmac.go"
+        },
+        {
+          "name": "line",
+          "value": 75
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/hmac.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/golang-jwt/jwt/v5/hmac.go",
-      "line": 97,
-      "properties": {
-        "algorithm": "HMAC",
-        "callingFunction": "Sign",
-        "cryptographyType": "Message Authentication Code",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "mac"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Sign"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/golang-jwt/jwt/v5/hmac.go"
+        },
+        {
+          "name": "line",
+          "value": 97
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rsa.VerifyPKCS1v15",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/golang-jwt/jwt/v5/rsa.go",
-      "line": 65,
-      "properties": {
-        "algorithm": "RSA",
-        "callingFunction": "Verify",
-        "cryptographyType": "Digital Signature",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "signature"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Verify"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/golang-jwt/jwt/v5/rsa.go"
+        },
+        {
+          "name": "line",
+          "value": 65
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rsa.SignPKCS1v15",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/golang-jwt/jwt/v5/rsa.go",
-      "line": 88,
-      "properties": {
-        "algorithm": "RSA",
-        "callingFunction": "Sign",
-        "cryptographyType": "Digital Signature",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "signature"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Sign"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/golang-jwt/jwt/v5/rsa.go"
+        },
+        {
+          "name": "line",
+          "value": 88
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rsa.VerifyPSS",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/golang-jwt/jwt/v5/rsa_pss.go",
-      "line": 106,
-      "properties": {
-        "algorithm": "RSA",
-        "callingFunction": "Verify",
-        "cryptographyType": "Asymmetric Cryptography",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "signature"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Verify"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/golang-jwt/jwt/v5/rsa_pss.go"
+        },
+        {
+          "name": "line",
+          "value": 106
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rsa.SignPSS",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/golang-jwt/jwt/v5/rsa_pss.go",
-      "line": 130,
-      "properties": {
-        "algorithm": "RSA-PSS",
-        "callingFunction": "Sign",
-        "cryptographyType": "Digital Signature",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "signature"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Sign"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/golang-jwt/jwt/v5/rsa_pss.go"
+        },
+        {
+          "name": "line",
+          "value": 130
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/subtle.ConstantTimeCompare",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/golang-jwt/jwt/v5/validator.go",
-      "line": 244,
-      "properties": {
-        "algorithm": "SUBTLE",
-        "callingFunction": "verifyAudience",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "verifyAudience"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/golang-jwt/jwt/v5/validator.go"
+        },
+        {
+          "name": "line",
+          "value": 244
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/aes.NewCipher",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/google/s2a-go/internal/record/internal/aeadcrypter/aesgcm.go",
-      "line": 44,
-      "properties": {
-        "algorithm": "AES",
-        "callingFunction": "NewAESGCM",
-        "cryptographyType": "Symmetric Encryption",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "encrypt",
+            "decrypt"
+          ],
+          "primitive": "block-cipher"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewAESGCM"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/google/s2a-go/internal/record/internal/aeadcrypter/aesgcm.go"
+        },
+        {
+          "name": "line",
+          "value": 44
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/cipher.NewGCM",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/google/s2a-go/internal/record/internal/aeadcrypter/aesgcm.go",
-      "line": 48,
-      "properties": {
-        "algorithm": "CIPHER",
-        "callingFunction": "NewAESGCM",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewAESGCM"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/google/s2a-go/internal/record/internal/aeadcrypter/aesgcm.go"
+        },
+        {
+          "name": "line",
+          "value": 48
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/chacha20poly1305.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/google/s2a-go/internal/record/internal/aeadcrypter/chachapoly.go",
-      "line": 45,
-      "properties": {
-        "algorithm": "CHACHA20POLY1305",
-        "callingFunction": "NewChachaPoly",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewChachaPoly"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/google/s2a-go/internal/record/internal/aeadcrypter/chachapoly.go"
+        },
+        {
+          "name": "line",
+          "value": 45
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/hkdf.Expand",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/google/s2a-go/internal/record/internal/halfconn/expander.go",
-      "line": 51,
-      "properties": {
-        "algorithm": "HKDF",
-        "callingFunction": "expand",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "expand"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/google/s2a-go/internal/record/internal/halfconn/expander.go"
+        },
+        {
+          "name": "line",
+          "value": 51
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/md5.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/google/uuid/hash.go",
-      "line": 50,
-      "properties": {
-        "algorithm": "MD5",
-        "callingFunction": "NewMD5",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewMD5"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/google/uuid/hash.go"
+        },
+        {
+          "name": "line",
+          "value": 50
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/google/uuid/hash.go",
-      "line": 58,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "NewSHA1",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewSHA1"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/google/uuid/hash.go"
+        },
+        {
+          "name": "line",
+          "value": 58
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Read",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/onsi/ginkgo/internal/specrunner/random_id.go",
-      "line": 10,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "randomID",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "randomID"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/onsi/ginkgo/internal/specrunner/random_id.go"
+        },
+        {
+          "name": "line",
+          "value": 10
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/openshift/library-go/pkg/crypto/crypto.go",
-      "line": 987,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "newKeyPairWithHash",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "newKeyPairWithHash"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/openshift/library-go/pkg/crypto/crypto.go"
+        },
+        {
+          "name": "line",
+          "value": 987
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rsa.GenerateKey",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/openshift/library-go/pkg/crypto/crypto.go",
-      "line": 995,
-      "properties": {
-        "algorithm": "RSA",
-        "callingFunction": "newRSAKeyPair",
-        "cryptographyType": "Asymmetric Key Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "keygen"
+          ],
+          "primitive": "pke"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "newRSAKeyPair"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/openshift/library-go/pkg/crypto/crypto.go"
+        },
+        {
+          "name": "line",
+          "value": 995
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/openshift/library-go/pkg/operator/events/recorder.go",
-      "line": 252,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "hashForEventNameSuffix",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "hashForEventNameSuffix"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/openshift/library-go/pkg/operator/events/recorder.go"
+        },
+        {
+          "name": "line",
+          "value": 252
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.Sum256",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/openshift/library-go/pkg/operator/resource/resourceapply/apps.go",
-      "line": 65,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "SetSpecHashAnnotation",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "SetSpecHashAnnotation"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/openshift/library-go/pkg/operator/resource/resourceapply/apps.go"
+        },
+        {
+          "name": "line",
+          "value": 65
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.Sum256",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/openshift/library-go/pkg/operator/resource/resourceapply/credentialsrequest.go",
-      "line": 36,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "AddCredentialsRequestHash",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "AddCredentialsRequestHash"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/openshift/library-go/pkg/operator/resource/resourceapply/credentialsrequest.go"
+        },
+        {
+          "name": "line",
+          "value": 36
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/md5.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/openshift/library-go/pkg/operator/resource/resourceapply/resource_cache.go",
-      "line": 164,
-      "properties": {
-        "algorithm": "MD5",
-        "callingFunction": "hashOfResourceStruct",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "hashOfResourceStruct"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/openshift/library-go/pkg/operator/resource/resourceapply/resource_cache.go"
+        },
+        {
+          "name": "line",
+          "value": 164
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/md5.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/pborman/uuid/hash.go",
-      "line": 44,
-      "properties": {
-        "algorithm": "MD5",
-        "callingFunction": "NewMD5",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewMD5"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/pborman/uuid/hash.go"
+        },
+        {
+          "name": "line",
+          "value": 44
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/pborman/uuid/hash.go",
-      "line": 52,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "NewSHA1",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewSHA1"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/pborman/uuid/hash.go"
+        },
+        {
+          "name": "line",
+          "value": 52
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.Sum256",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/prometheus/common/config/http_config.go",
-      "line": 1345,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "getTLSDataWithHash",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "getTLSDataWithHash"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/prometheus/common/config/http_config.go"
+        },
+        {
+          "name": "line",
+          "value": 1345
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.Sum256",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/prometheus/common/config/http_config.go",
-      "line": 1348,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "getTLSDataWithHash",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "getTLSDataWithHash"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/prometheus/common/config/http_config.go"
+        },
+        {
+          "name": "line",
+          "value": 1348
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.Sum256",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/prometheus/common/config/http_config.go",
-      "line": 1351,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "getTLSDataWithHash",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "getTLSDataWithHash"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/prometheus/common/config/http_config.go"
+        },
+        {
+          "name": "line",
+          "value": 1351
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/prometheus/prometheus/config/reload.go",
-      "line": 33,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "GenerateChecksum",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "GenerateChecksum"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/prometheus/prometheus/config/reload.go"
+        },
+        {
+          "name": "line",
+          "value": 33
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/md5.Sum",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/prometheus/prometheus/model/relabel/relabel.go",
-      "line": 328,
-      "properties": {
-        "algorithm": "MD5",
-        "callingFunction": "relabel",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "relabel"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/prometheus/prometheus/model/relabel/relabel.go"
+        },
+        {
+          "name": "line",
+          "value": 328
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/md5.Sum",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/prometheus/prometheus/notifier/notifier.go",
-      "line": 821,
-      "properties": {
-        "algorithm": "MD5",
-        "callingFunction": "configHash",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "configHash"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/prometheus/prometheus/notifier/notifier.go"
+        },
+        {
+          "name": "line",
+          "value": 821
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/md5.Sum",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/prometheus/prometheus/storage/remote/storage.go",
-      "line": 227,
-      "properties": {
-        "algorithm": "MD5",
-        "callingFunction": "toHash",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "toHash"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/prometheus/prometheus/storage/remote/storage.go"
+        },
+        {
+          "name": "line",
+          "value": 227
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/prometheus/prometheus/util/testutil/directory.go",
-      "line": 135,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "DirHash",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "DirHash"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/prometheus/prometheus/util/testutil/directory.go"
+        },
+        {
+          "name": "line",
+          "value": 135
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/github.com/prometheus/prometheus/web/api/v1/api.go",
-      "line": 1638,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "getRuleGroupNextToken",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "getRuleGroupNextToken"
+        },
+        {
+          "name": "file",
+          "value": "vendor/github.com/prometheus/prometheus/web/api/v1/api.go"
+        },
+        {
+          "name": "line",
+          "value": 1638
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/internal/alias.InexactOverlap",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/chacha20/chacha_generic.go",
-      "line": 192,
-      "properties": {
-        "algorithm": "ALIAS",
-        "callingFunction": "XORKeyStream",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "XORKeyStream"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/chacha20/chacha_generic.go"
+        },
+        {
+          "name": "line",
+          "value": 192
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/internal/alias.InexactOverlap",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go",
-      "line": 58,
-      "properties": {
-        "algorithm": "ALIAS",
-        "callingFunction": "seal",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "seal"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go"
+        },
+        {
+          "name": "line",
+          "value": 58
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/internal/alias.InexactOverlap",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go",
-      "line": 75,
-      "properties": {
-        "algorithm": "ALIAS",
-        "callingFunction": "open",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "open"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go"
+        },
+        {
+          "name": "line",
+          "value": 75
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/internal/alias.InexactOverlap",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go",
-      "line": 33,
-      "properties": {
-        "algorithm": "ALIAS",
-        "callingFunction": "sealGeneric",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "sealGeneric"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go"
+        },
+        {
+          "name": "line",
+          "value": 33
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/chacha20.NewUnauthenticatedCipher",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go",
-      "line": 38,
-      "properties": {
-        "algorithm": "CHACHA20",
-        "callingFunction": "sealGeneric",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "sealGeneric"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go"
+        },
+        {
+          "name": "line",
+          "value": 38
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/internal/poly1305.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go",
-      "line": 43,
-      "properties": {
-        "algorithm": "POLY1305",
-        "callingFunction": "sealGeneric",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "sealGeneric"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go"
+        },
+        {
+          "name": "line",
+          "value": 43
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/chacha20.NewUnauthenticatedCipher",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go",
-      "line": 58,
-      "properties": {
-        "algorithm": "CHACHA20",
-        "callingFunction": "openGeneric",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "openGeneric"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go"
+        },
+        {
+          "name": "line",
+          "value": 58
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/internal/poly1305.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go",
-      "line": 62,
-      "properties": {
-        "algorithm": "POLY1305",
-        "callingFunction": "openGeneric",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "openGeneric"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go"
+        },
+        {
+          "name": "line",
+          "value": 62
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/internal/alias.InexactOverlap",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go",
-      "line": 69,
-      "properties": {
-        "algorithm": "ALIAS",
-        "callingFunction": "openGeneric",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "openGeneric"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go"
+        },
+        {
+          "name": "line",
+          "value": 69
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/chacha20.HChaCha20",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/chacha20poly1305/xchacha20poly1305.go",
-      "line": 56,
-      "properties": {
-        "algorithm": "CHACHA20",
-        "callingFunction": "Seal",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Seal"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/chacha20poly1305/xchacha20poly1305.go"
+        },
+        {
+          "name": "line",
+          "value": 56
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/chacha20.HChaCha20",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/chacha20poly1305/xchacha20poly1305.go",
-      "line": 78,
-      "properties": {
-        "algorithm": "CHACHA20",
-        "callingFunction": "Open",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Open"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/chacha20poly1305/xchacha20poly1305.go"
+        },
+        {
+          "name": "line",
+          "value": 78
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/cryptobyte/asn1.Tag",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/cryptobyte/asn1.go",
-      "line": 644,
-      "properties": {
-        "algorithm": "ASN1",
-        "callingFunction": "PeekASN1Tag",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "PeekASN1Tag"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/cryptobyte/asn1.go"
+        },
+        {
+          "name": "line",
+          "value": 644
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/cryptobyte/asn1.Tag",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/cryptobyte/asn1.go",
-      "line": 771,
-      "properties": {
-        "algorithm": "ASN1",
-        "callingFunction": "readASN1",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "readASN1"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/cryptobyte/asn1.go"
+        },
+        {
+          "name": "line",
+          "value": 771
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/hmac.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/hkdf/hkdf.go",
-      "line": 30,
-      "properties": {
-        "algorithm": "HMAC",
-        "callingFunction": "Extract",
-        "cryptographyType": "Message Authentication Code",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "mac"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Extract"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/hkdf/hkdf.go"
+        },
+        {
+          "name": "line",
+          "value": 30
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/hmac.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/hkdf/hkdf.go",
-      "line": 86,
-      "properties": {
-        "algorithm": "HMAC",
-        "callingFunction": "Expand",
-        "cryptographyType": "Message Authentication Code",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "mac"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Expand"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/hkdf/hkdf.go"
+        },
+        {
+          "name": "line",
+          "value": 86
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/subtle.ConstantTimeCompare",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/internal/poly1305/poly1305.go",
-      "line": 38,
-      "properties": {
-        "algorithm": "SUBTLE",
-        "callingFunction": "Verify",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Verify"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/internal/poly1305/poly1305.go"
+        },
+        {
+          "name": "line",
+          "value": 38
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/subtle.ConstantTimeCompare",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/internal/poly1305/poly1305.go",
-      "line": 98,
-      "properties": {
-        "algorithm": "SUBTLE",
-        "callingFunction": "Verify",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Verify"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/internal/poly1305/poly1305.go"
+        },
+        {
+          "name": "line",
+          "value": 98
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/des.NewTripleDESCipher",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/pkcs12/crypto.go",
-      "line": 36,
-      "properties": {
-        "algorithm": "DES",
-        "callingFunction": "create",
-        "cryptographyType": "Symmetric Encryption",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "encrypt",
+            "decrypt"
+          ],
+          "primitive": "block-cipher"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "create"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/pkcs12/crypto.go"
+        },
+        {
+          "name": "line",
+          "value": 36
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/pkcs12/internal/rc2.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/pkcs12/crypto.go",
-      "line": 50,
-      "properties": {
-        "algorithm": "RC2",
-        "callingFunction": "create",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.36.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "create"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/pkcs12/crypto.go"
+        },
+        {
+          "name": "line",
+          "value": 50
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/cipher.NewCBCDecrypter",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/pkcs12/crypto.go",
-      "line": 91,
-      "properties": {
-        "algorithm": "CIPHER",
-        "callingFunction": "pbDecrypterFor",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "pbDecrypterFor"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/pkcs12/crypto.go"
+        },
+        {
+          "name": "line",
+          "value": 91
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/hmac.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/pkcs12/mac.go",
-      "line": 37,
-      "properties": {
-        "algorithm": "HMAC",
-        "callingFunction": "verifyMac",
-        "cryptographyType": "Message Authentication Code",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "mac"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "verifyMac"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/pkcs12/mac.go"
+        },
+        {
+          "name": "line",
+          "value": 37
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/hmac.Equal",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/pkcs12/mac.go",
-      "line": 41,
-      "properties": {
-        "algorithm": "HMAC",
-        "callingFunction": "verifyMac",
-        "cryptographyType": "Message Authentication Code",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "mac"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "verifyMac"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/pkcs12/mac.go"
+        },
+        {
+          "name": "line",
+          "value": 41
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.Sum",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/crypto/pkcs12/pbkdf.go",
-      "line": 19,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "sha1Sum",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "sha1Sum"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/crypto/pkcs12/pbkdf.go"
+        },
+        {
+          "name": "line",
+          "value": 19
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Read",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/net/http2/server.go",
-      "line": 1088,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "handlePingTimer",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "handlePingTimer"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/net/http2/server.go"
+        },
+        {
+          "name": "line",
+          "value": 1088
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Read",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/net/http2/transport.go",
-      "line": 2986,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "Ping",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Ping"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/net/http2/transport.go"
+        },
+        {
+          "name": "line",
+          "value": 2986
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Read",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/net/http2/transport.go",
-      "line": 3075,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "writeStreamReset",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "writeStreamReset"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/net/http2/transport.go"
+        },
+        {
+          "name": "line",
+          "value": 3075
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/oauth2/google/externalaccount/aws.go",
-      "line": 83,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "getSha256",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "getSha256"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/oauth2/google/externalaccount/aws.go"
+        },
+        {
+          "name": "line",
+          "value": 83
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/hmac.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/oauth2/google/externalaccount/aws.go",
-      "line": 91,
-      "properties": {
-        "algorithm": "HMAC",
-        "callingFunction": "getHmacSha256",
-        "cryptographyType": "Message Authentication Code",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "mac"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "getHmacSha256"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/oauth2/google/externalaccount/aws.go"
+        },
+        {
+          "name": "line",
+          "value": 91
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/oauth2/jws/jws.go",
-      "line": 158,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "Encode",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Encode"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/oauth2/jws/jws.go"
+        },
+        {
+          "name": "line",
+          "value": 158
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rsa.SignPKCS1v15",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/oauth2/jws/jws.go",
-      "line": 160,
-      "properties": {
-        "algorithm": "RSA",
-        "callingFunction": "Encode",
-        "cryptographyType": "Digital Signature",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "signature"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Encode"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/oauth2/jws/jws.go"
+        },
+        {
+          "name": "line",
+          "value": 160
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/oauth2/jws/jws.go",
-      "line": 179,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "Verify",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Verify"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/oauth2/jws/jws.go"
+        },
+        {
+          "name": "line",
+          "value": 179
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rsa.VerifyPKCS1v15",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/oauth2/jws/jws.go",
-      "line": 181,
-      "properties": {
-        "algorithm": "RSA",
-        "callingFunction": "Verify",
-        "cryptographyType": "Digital Signature",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "signature"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Verify"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/oauth2/jws/jws.go"
+        },
+        {
+          "name": "line",
+          "value": 181
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Read",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/oauth2/pkce.go",
-      "line": 33,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "GenerateVerifier",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "GenerateVerifier"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/oauth2/pkce.go"
+        },
+        {
+          "name": "line",
+          "value": 33
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.Sum256",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/oauth2/pkce.go",
-      "line": 49,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "S256ChallengeFromVerifier",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "S256ChallengeFromVerifier"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/oauth2/pkce.go"
+        },
+        {
+          "name": "line",
+          "value": 49
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/md5.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/golang.org/x/tools/internal/pkgbits/encoder.go",
-      "line": 58,
-      "properties": {
-        "algorithm": "MD5",
-        "callingFunction": "DumpTo",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "DumpTo"
+        },
+        {
+          "name": "file",
+          "value": "vendor/golang.org/x/tools/internal/pkgbits/encoder.go"
+        },
+        {
+          "name": "line",
+          "value": 58
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/aes.NewCipher",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/google.golang.org/grpc/credentials/alts/internal/conn/aeadrekey.go",
-      "line": 96,
-      "properties": {
-        "algorithm": "AES",
-        "callingFunction": "rekeyIfRequired",
-        "cryptographyType": "Symmetric Encryption",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "encrypt",
+            "decrypt"
+          ],
+          "primitive": "block-cipher"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "rekeyIfRequired"
+        },
+        {
+          "name": "file",
+          "value": "vendor/google.golang.org/grpc/credentials/alts/internal/conn/aeadrekey.go"
+        },
+        {
+          "name": "line",
+          "value": 96
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/cipher.NewGCM",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/google.golang.org/grpc/credentials/alts/internal/conn/aeadrekey.go",
-      "line": 100,
-      "properties": {
-        "algorithm": "CIPHER",
-        "callingFunction": "rekeyIfRequired",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "rekeyIfRequired"
+        },
+        {
+          "name": "file",
+          "value": "vendor/google.golang.org/grpc/credentials/alts/internal/conn/aeadrekey.go"
+        },
+        {
+          "name": "line",
+          "value": 100
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/hmac.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/google.golang.org/grpc/credentials/alts/internal/conn/aeadrekey.go",
-      "line": 127,
-      "properties": {
-        "algorithm": "HMAC",
-        "callingFunction": "hkdfExpand",
-        "cryptographyType": "Message Authentication Code",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "sign"
+          ],
+          "primitive": "mac"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "hkdfExpand"
+        },
+        {
+          "name": "file",
+          "value": "vendor/google.golang.org/grpc/credentials/alts/internal/conn/aeadrekey.go"
+        },
+        {
+          "name": "line",
+          "value": 127
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/aes.NewCipher",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/google.golang.org/grpc/credentials/alts/internal/conn/aes128gcm.go",
-      "line": 48,
-      "properties": {
-        "algorithm": "AES",
-        "callingFunction": "NewAES128GCM",
-        "cryptographyType": "Symmetric Encryption",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "encrypt",
+            "decrypt"
+          ],
+          "primitive": "block-cipher"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewAES128GCM"
+        },
+        {
+          "name": "file",
+          "value": "vendor/google.golang.org/grpc/credentials/alts/internal/conn/aes128gcm.go"
+        },
+        {
+          "name": "line",
+          "value": 48
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/cipher.NewGCM",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/google.golang.org/grpc/credentials/alts/internal/conn/aes128gcm.go",
-      "line": 52,
-      "properties": {
-        "algorithm": "CIPHER",
-        "callingFunction": "NewAES128GCM",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewAES128GCM"
+        },
+        {
+          "name": "file",
+          "value": "vendor/google.golang.org/grpc/credentials/alts/internal/conn/aes128gcm.go"
+        },
+        {
+          "name": "line",
+          "value": 52
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Int",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/k8s.io/client-go/util/cert/cert.go",
-      "line": 63,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "NewSelfSignedCACert",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewSelfSignedCACert"
+        },
+        {
+          "name": "file",
+          "value": "vendor/k8s.io/client-go/util/cert/cert.go"
+        },
+        {
+          "name": "line",
+          "value": 63
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rsa.GenerateKey",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/k8s.io/client-go/util/cert/cert.go",
-      "line": 127,
-      "properties": {
-        "algorithm": "RSA",
-        "callingFunction": "GenerateSelfSignedCertKeyWithFixtures",
-        "cryptographyType": "Asymmetric Key Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "keygen"
+          ],
+          "primitive": "pke"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "GenerateSelfSignedCertKeyWithFixtures"
+        },
+        {
+          "name": "file",
+          "value": "vendor/k8s.io/client-go/util/cert/cert.go"
+        },
+        {
+          "name": "line",
+          "value": 127
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Int",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/k8s.io/client-go/util/cert/cert.go",
-      "line": 132,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "GenerateSelfSignedCertKeyWithFixtures",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "GenerateSelfSignedCertKeyWithFixtures"
+        },
+        {
+          "name": "file",
+          "value": "vendor/k8s.io/client-go/util/cert/cert.go"
+        },
+        {
+          "name": "line",
+          "value": 132
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rsa.GenerateKey",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/k8s.io/client-go/util/cert/cert.go",
-      "line": 160,
-      "properties": {
-        "algorithm": "RSA",
-        "callingFunction": "GenerateSelfSignedCertKeyWithFixtures",
-        "cryptographyType": "Asymmetric Key Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "keygen"
+          ],
+          "primitive": "pke"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "GenerateSelfSignedCertKeyWithFixtures"
+        },
+        {
+          "name": "file",
+          "value": "vendor/k8s.io/client-go/util/cert/cert.go"
+        },
+        {
+          "name": "line",
+          "value": 160
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Int",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/k8s.io/client-go/util/cert/cert.go",
-      "line": 165,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "GenerateSelfSignedCertKeyWithFixtures",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "GenerateSelfSignedCertKeyWithFixtures"
+        },
+        {
+          "name": "file",
+          "value": "vendor/k8s.io/client-go/util/cert/cert.go"
+        },
+        {
+          "name": "line",
+          "value": 165
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/ecdsa.GenerateKey",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/k8s.io/client-go/util/keyutil/key.go",
-      "line": 46,
-      "properties": {
-        "algorithm": "ECDSA",
-        "callingFunction": "MakeEllipticPrivateKeyPEM",
-        "cryptographyType": "Asymmetric Key Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "keygen"
+          ],
+          "primitive": "other"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "MakeEllipticPrivateKeyPEM"
+        },
+        {
+          "name": "file",
+          "value": "vendor/k8s.io/client-go/util/keyutil/key.go"
+        },
+        {
+          "name": "line",
+          "value": 46
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha512.Sum512",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "vendor/k8s.io/kube-openapi/pkg/handler3/handler.go",
-      "line": 125,
-      "properties": {
-        "algorithm": "SHA-512",
-        "callingFunction": "computeETag",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "computeETag"
+        },
+        {
+          "name": "file",
+          "value": "vendor/k8s.io/kube-openapi/pkg/handler3/handler.go"
+        },
+        {
+          "name": "line",
+          "value": 125
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     }
   ]
 }
