@@ -1,359 +1,755 @@
 {
   "bomFormat": "CycloneDX",
-  "specVersion": "1.4",
+  "specVersion": "1.6",
   "version": 1,
   "components": [
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Documented: Used to produce a checksum and validate cached files.",
-      "file": "pkg/asset/agent/image/cache.go",
-      "line": 168,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "cacheFile",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "cacheFile"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/agent/image/cache.go"
+        },
+        {
+          "name": "line",
+          "value": 168
+        },
+        {
+          "name": "rationale",
+          "value": "Used to produce a checksum and validate cached files."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Documented: Used to validate cached installer files and inform the user if the installer is outdated.",
-      "file": "pkg/asset/agent/image/oc.go",
-      "line": 252,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "verifyCacheFile",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "verifyCacheFile"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/agent/image/oc.go"
+        },
+        {
+          "name": "line",
+          "value": 252
+        },
+        {
+          "name": "rationale",
+          "value": "Used to validate cached installer files and inform the user if the installer is outdated."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Int",
-      "description": "Documented: Used to randomly select characters for passwords.",
-      "file": "pkg/asset/ignition/bootstrap/baremetal/ironic_creds.go",
-      "line": 43,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "generateRandomPassword",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "generateRandomPassword"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/ignition/bootstrap/baremetal/ironic_creds.go"
+        },
+        {
+          "name": "line",
+          "value": 43
+        },
+        {
+          "name": "rationale",
+          "value": "Used to randomly select characters for passwords."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Int",
-      "description": "Documented: Used to select random characters for passwords.",
-      "file": "pkg/asset/password/password.go",
-      "line": 54,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "generateRandomPasswordHash",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "generateRandomPasswordHash"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/password/password.go"
+        },
+        {
+          "name": "line",
+          "value": 54
+        },
+        {
+          "name": "rationale",
+          "value": "Used to select random characters for passwords."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Int",
-      "description": "Documented: Used to select random characters for passwords.",
-      "file": "pkg/asset/password/password.go",
-      "line": 64,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "generateRandomPasswordHash",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "generateRandomPasswordHash"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/password/password.go"
+        },
+        {
+          "name": "line",
+          "value": 64
+        },
+        {
+          "name": "rationale",
+          "value": "Used to select random characters for passwords."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/bcrypt.GenerateFromPassword",
-      "description": "Documented: Generate a hash of a randomly generated password.",
-      "file": "pkg/asset/password/password.go",
-      "line": 80,
-      "properties": {
-        "algorithm": "BCRYPT",
-        "callingFunction": "generateRandomPasswordHash",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
+          "primitive": "unknown"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "generateRandomPasswordHash"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/password/password.go"
+        },
+        {
+          "name": "line",
+          "value": 80
+        },
+        {
+          "name": "rationale",
+          "value": "Generate a hash of a randomly generated password."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh.NewPublicKey",
-      "description": "Documented: Used to save a newly generated ssh keypair to an authorized_keys file.",
-      "file": "pkg/asset/tls/bootstrapsshkeypair.go",
-      "line": 47,
-      "properties": {
-        "algorithm": "SSH",
-        "callingFunction": "Generate",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Generate"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/tls/bootstrapsshkeypair.go"
+        },
+        {
+          "name": "line",
+          "value": 47
+        },
+        {
+          "name": "rationale",
+          "value": "Used to save a newly generated ssh keypair to an authorized_keys file."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh.MarshalAuthorizedKey",
-      "description": "Documented: Used to save a newly generated ssh keypair to an authorized_keys file.",
-      "file": "pkg/asset/tls/bootstrapsshkeypair.go",
-      "line": 54,
-      "properties": {
-        "algorithm": "SSH",
-        "callingFunction": "Generate",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Generate"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/tls/bootstrapsshkeypair.go"
+        },
+        {
+          "name": "line",
+          "value": 54
+        },
+        {
+          "name": "rationale",
+          "value": "Used to save a newly generated ssh keypair to an authorized_keys file."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rsa.GenerateKey",
-      "description": "Documented: Used to generate a random SSH private key",
-      "file": "pkg/asset/tls/tls.go",
-      "line": 55,
-      "properties": {
-        "KeyStrength": "2048",
-        "algorithm": "RSA",
-        "callingFunction": "PrivateKey",
-        "cryptographyType": "Asymmetric Key Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "keygen"
+          ],
+          "primitive": "pke"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "PrivateKey"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/tls/tls.go"
+        },
+        {
+          "name": "line",
+          "value": 55
+        },
+        {
+          "name": "rationale",
+          "value": "Used to generate a random SSH private key"
+        },
+        {
+          "name": "keyStrength",
+          "value": "2048"
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Int",
-      "description": "Documented: Used to generate a serial number for a self-signed certificate.",
-      "file": "pkg/asset/tls/tls.go",
-      "line": 66,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "SelfSignedCertificate",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "SelfSignedCertificate"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/tls/tls.go"
+        },
+        {
+          "name": "line",
+          "value": 66
+        },
+        {
+          "name": "rationale",
+          "value": "Used to generate a serial number for a self-signed certificate."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Int",
-      "description": "Documented: Used to generate a serial number for a signed certificate.",
-      "file": "pkg/asset/tls/tls.go",
-      "line": 104,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "SignedCertificate",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "SignedCertificate"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/tls/tls.go"
+        },
+        {
+          "name": "line",
+          "value": 104
+        },
+        {
+          "name": "rationale",
+          "value": "Used to generate a serial number for a signed certificate."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.Sum",
-      "description": "Documented: Used to generate a hash of an SSH public key.",
-      "file": "pkg/asset/tls/tls.go",
-      "line": 152,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "generateSubjectKeyID",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "generateSubjectKeyID"
+        },
+        {
+          "name": "file",
+          "value": "pkg/asset/tls/tls.go"
+        },
+        {
+          "name": "line",
+          "value": 152
+        },
+        {
+          "name": "rationale",
+          "value": "Used to generate a hash of an SSH public key."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh/agent.NewClient",
-      "description": "Documented: Used to establish SSH connections.",
-      "file": "pkg/gather/ssh/agent.go",
-      "line": 21,
-      "properties": {
-        "algorithm": "AGENT",
-        "callingFunction": "getAgent",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "getAgent"
+        },
+        {
+          "name": "file",
+          "value": "pkg/gather/ssh/agent.go"
+        },
+        {
+          "name": "line",
+          "value": 21
+        },
+        {
+          "name": "rationale",
+          "value": "Used to establish SSH connections."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh/agent.NewKeyring",
-      "description": "Documented: Used to store keys in memory for SSH sessions.",
-      "file": "pkg/gather/ssh/agent.go",
-      "line": 37,
-      "properties": {
-        "algorithm": "AGENT",
-        "callingFunction": "newAgent",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "newAgent"
+        },
+        {
+          "name": "file",
+          "value": "pkg/gather/ssh/agent.go"
+        },
+        {
+          "name": "line",
+          "value": 37
+        },
+        {
+          "name": "rationale",
+          "value": "Used to store keys in memory for SSH sessions."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh.Dial",
-      "description": "Documented: Used to create a new SSH client which can be used to SSH to address using user and the keys.",
-      "file": "pkg/gather/ssh/ssh.go",
-      "line": 29,
-      "properties": {
-        "algorithm": "SSH",
-        "callingFunction": "NewClient",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewClient"
+        },
+        {
+          "name": "file",
+          "value": "pkg/gather/ssh/ssh.go"
+        },
+        {
+          "name": "line",
+          "value": 29
+        },
+        {
+          "name": "rationale",
+          "value": "Used to create a new SSH client which can be used to SSH to address using user and the keys."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh.PublicKeysCallback",
-      "description": "Documented: Use a callback rather than PublicKeys",
-      "file": "pkg/gather/ssh/ssh.go",
-      "line": 35,
-      "properties": {
-        "algorithm": "SSH",
-        "callingFunction": "NewClient",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewClient"
+        },
+        {
+          "name": "file",
+          "value": "pkg/gather/ssh/ssh.go"
+        },
+        {
+          "name": "line",
+          "value": 35
+        },
+        {
+          "name": "rationale",
+          "value": "Use a callback rather than PublicKeys"
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh.InsecureIgnoreHostKey",
-      "description": "Documented: Used to ignore insecure hosts.",
-      "file": "pkg/gather/ssh/ssh.go",
-      "line": 38,
-      "properties": {
-        "algorithm": "SSH",
-        "callingFunction": "NewClient",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewClient"
+        },
+        {
+          "name": "file",
+          "value": "pkg/gather/ssh/ssh.go"
+        },
+        {
+          "name": "line",
+          "value": 38
+        },
+        {
+          "name": "rationale",
+          "value": "Used to ignore insecure hosts."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh/agent.ForwardToAgent",
-      "description": "Documented: Used for routing authentication requests to the correct keyring.",
-      "file": "pkg/gather/ssh/ssh.go",
-      "line": 50,
-      "properties": {
-        "algorithm": "AGENT",
-        "callingFunction": "NewClient",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "NewClient"
+        },
+        {
+          "name": "file",
+          "value": "pkg/gather/ssh/ssh.go"
+        },
+        {
+          "name": "line",
+          "value": 50
+        },
+        {
+          "name": "rationale",
+          "value": "Used for routing authentication requests to the correct keyring."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh/agent.RequestAgentForwarding",
-      "description": "Documented: Used to setup agent forwarding for the SSH session.",
-      "file": "pkg/gather/ssh/ssh.go",
-      "line": 64,
-      "properties": {
-        "algorithm": "AGENT",
-        "callingFunction": "Run",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "Run"
+        },
+        {
+          "name": "file",
+          "value": "pkg/gather/ssh/ssh.go"
+        },
+        {
+          "name": "line",
+          "value": 64
+        },
+        {
+          "name": "rationale",
+          "value": "Used to setup agent forwarding for the SSH session."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh.ParseRawPrivateKey",
-      "description": "Documented: Used to parse private key data after reading it from a file on disk.",
-      "file": "pkg/gather/ssh/ssh.go",
-      "line": 136,
-      "properties": {
-        "algorithm": "SSH",
-        "callingFunction": "LoadPrivateSSHKeys",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "LoadPrivateSSHKeys"
+        },
+        {
+          "name": "file",
+          "value": "pkg/gather/ssh/ssh.go"
+        },
+        {
+          "name": "line",
+          "value": 136
+        },
+        {
+          "name": "rationale",
+          "value": "Used to parse private key data after reading it from a file on disk."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Documented: Used to hash files on disk for cache logic.",
-      "file": "pkg/tfvars/internal/cache/cache.go",
-      "line": 145,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "cacheFile",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "cacheFile"
+        },
+        {
+          "name": "file",
+          "value": "pkg/tfvars/internal/cache/cache.go"
+        },
+        {
+          "name": "line",
+          "value": 145
+        },
+        {
+          "name": "rationale",
+          "value": "Used to hash files on disk for cache logic."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/md5.Sum",
-      "description": "Documented: Used to generate an ID for the Cloud Controller bashed on a hash of the infrastructure ID.",
-      "file": "pkg/types/gcp/clouduid.go",
-      "line": 12,
-      "properties": {
-        "algorithm": "MD5",
-        "callingFunction": "CloudControllerUID",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "CloudControllerUID"
+        },
+        {
+          "name": "file",
+          "value": "pkg/types/gcp/clouduid.go"
+        },
+        {
+          "name": "line",
+          "value": 12
+        },
+        {
+          "name": "rationale",
+          "value": "Used to generate an ID for the Cloud Controller bashed on a hash of the infrastructure ID."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Int",
-      "description": "Documented: Used to generate a random number for the third octet of the network ID.",
-      "file": "pkg/types/powervs/defaults/platform.go",
-      "line": 21,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "SetPlatformDefaults",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "SetPlatformDefaults"
+        },
+        {
+          "name": "file",
+          "value": "pkg/types/powervs/defaults/platform.go"
+        },
+        {
+          "name": "line",
+          "value": 21
+        },
+        {
+          "name": "rationale",
+          "value": "Used to generate a random number for the third octet of the network ID."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/rand.Int",
-      "description": "Documented: Used to generate a random number, which is used to get a random zone name for testing.",
-      "file": "pkg/types/powervs/validation/platform_test.go",
-      "line": 21,
-      "properties": {
-        "algorithm": "CSPRNG",
-        "callingFunction": "genRandNum",
-        "cryptographyType": "Random Number Generation",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "primitive": "drbg"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "genRandNum"
+        },
+        {
+          "name": "file",
+          "value": "pkg/types/powervs/validation/platform_test.go"
+        },
+        {
+          "name": "line",
+          "value": 21
+        },
+        {
+          "name": "rationale",
+          "value": "Used to generate a random number, which is used to get a random zone name for testing."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh.ParseAuthorizedKey",
-      "description": "Documented: Reads public SSH keys to perform additional validation that ensure the key is compliant with FIPS compatible key types.",
-      "file": "pkg/types/validation/installconfig.go",
-      "line": 980,
-      "properties": {
-        "algorithm": "SSH",
-        "callingFunction": "validateFIPSconfig",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "validateFIPSconfig"
+        },
+        {
+          "name": "file",
+          "value": "pkg/types/validation/installconfig.go"
+        },
+        {
+          "name": "line",
+          "value": 980
+        },
+        {
+          "name": "rationale",
+          "value": "Reads public SSH keys to perform additional validation that ensure the key is compliant with FIPS compatible key types."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "golang.org/x/crypto/ssh.ParseAuthorizedKey",
-      "description": "Documented: Helper function that relies on ssh.ParseAuthorizedKey() to validate the public SSH key, and returns an error if the key is invalid.",
-      "file": "pkg/validate/validate.go",
-      "line": 192,
-      "properties": {
-        "algorithm": "SSH",
-        "callingFunction": "SSHPublicKey",
-        "cryptographyType": "Unknown",
-        "moduleVersion": "v0.1.0"
-      }
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "SSHPublicKey"
+        },
+        {
+          "name": "file",
+          "value": "pkg/validate/validate.go"
+        },
+        {
+          "name": "line",
+          "value": 192
+        },
+        {
+          "name": "rationale",
+          "value": "Helper function that relies on ssh.ParseAuthorizedKey() to validate the public SSH key, and returns an error if the key is invalid."
+        }
+      ]
     },
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha256.New",
-      "description": "Documented: Used to hash the contents of corrupt .ovf files. The hash is used in error messages.",
-      "file": "terraform/providers/vsphereprivate/resource_vsphereprivate_import_ova.go",
-      "line": 346,
-      "properties": {
-        "algorithm": "SHA-256",
-        "callingFunction": "resourceVSpherePrivateImportOvaCreate",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "resourceVSpherePrivateImportOvaCreate"
+        },
+        {
+          "name": "file",
+          "value": "terraform/providers/vsphereprivate/resource_vsphereprivate_import_ova.go"
+        },
+        {
+          "name": "line",
+          "value": 346
+        },
+        {
+          "name": "rationale",
+          "value": "Used to hash the contents of corrupt .ovf files. The hash is used in error messages."
+        }
+      ]
     }
   ]
 }

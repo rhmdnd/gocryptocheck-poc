@@ -2,8 +2,7 @@
 
 Make it easier to detect and document cryptographic usage in a Golang project
 by reporting potential cryptographic functions. Reports are produced in
-[CycloneDX](https://cyclonedx.org/) format by default, but the tool also
-supports plain text and [SPDX](https://spdx.dev/).
+[CycloneDX](https://cyclonedx.org/) format by default since it has support for cryptographic concepts built into the [schema](https://cyclonedx.org/docs/1.6/json/#components_items_cryptoProperties).
 
 This prototype reports code that accesses functions from the
 [crypto](https://pkg.go.dev/crypto) and
@@ -22,24 +21,42 @@ $ go build -o gocryptocheck main.go
 Run the tool on a Golang project repository:
 
 ```console
-$ ../gocryptocheck-poc/gocryptocheck --excludeDir vendor
+$ ../gocryptocheck-poc/gocryptocheck -format cyclonedx -excludeDir vendor
 {
   "bomFormat": "CycloneDX",
-  "specVersion": "1.4",
+  "specVersion": "1.6",
   "version": 1,
   "components": [
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.New",
-      "description": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`.",
-      "file": "pkg/utils/nameutils.go",
-      "line": 23,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "LengthName",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "LengthName"
+        },
+        {
+          "name": "file",
+          "value": "pkg/utils/nameutils.go"
+        },
+        {
+          "name": "line",
+          "value": 23
+        },
+        {
+          "name": "rationale",
+          "value": "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: \u003crationale\u003e[; key: value...]`."
+        }
+      ]
     }
   ]
 }
@@ -66,62 +83,45 @@ index b4691f44a..8c046da46 100644
 Run the tool again:
 
 ```console
-$ ../gocryptocheck-poc/gocryptocheck --excludeDir vendor
+$ ../gocryptocheck-poc/gocryptocheck -format cyclonedx -excludeDir vendor
 {
   "bomFormat": "CycloneDX",
-  "specVersion": "1.4",
+  "specVersion": "1.6",
   "version": 1,
   "components": [
     {
-      "type": "module",
+      "type": "cryptographic-asset",
       "name": "crypto/sha1.New",
-      "description": "Documented: sha1.New() is only used here to hash a string so it's shorter",
-      "file": "pkg/utils/nameutils.go",
-      "line": 24,
-      "properties": {
-        "algorithm": "SHA-1",
-        "callingFunction": "LengthName",
-        "cryptographyType": "Message Digest",
-        "moduleVersion": "go1.23.0"
-      }
+      "cryptoProperties": {
+        "algorithmProperties": {
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "primitive": "hash"
+        },
+        "assetType": "algorithm"
+      },
+      "properties": [
+        {
+          "name": "callingFunction",
+          "value": "LengthName"
+        },
+        {
+          "name": "file",
+          "value": "pkg/utils/nameutils.go"
+        },
+        {
+          "name": "line",
+          "value": 24
+        },
+        {
+          "name": "rationale",
+          "value": "sha1.New() is only used here to hash a string so it's shorter"
+        }
+      ]
     }
   ]
 }
-```
-
-Generate reports in SPDX:
-
-```console
- $ ../gocryptocheck-poc/gocryptocheck -format spdx --excludeDir vendor
-SPDXVersion: SPDX-2.2
-DataLicense: CC0-1.0
-SPDXID: SPDXRef-DOCUMENT
-DocumentName: gocryptocheck Cryptographic Usage SPDX Report
-DocumentNamespace: http://spdx.org/spdxdocs/gocryptocheck-1745337348
-Creator: Tool: gocryptocheck
-Created: 2025-04-22T10:55:48-05:00
-
-##### Cryptographic usage found in pkg/utils/nameutils.go at line 24
-PackageName: crypto/sha1.New
-SPDXID: SPDXRef-crypto.sha1.New-24
-PackageVersion: go1.23.0
-PackageDownloadLocation: NOASSERTION
-PackageDescription: Documented: sha1.New() is only used here to hash a string so it's shorter
-PackageComment: algorithm: SHA-1
-PackageComment: cryptographyType: Message Digest
-PackageComment: callingFunction: LengthName
-```
-
-Or plain text:
-
-```console
-$ ../gocryptocheck-poc/gocryptocheck -format text --excludeDir vendor
-pkg/utils/nameutils.go:24: crypto/sha1.New - Documented: sha1.New() is only used here to hash a string so it's shorter
-  Additional details:
-    moduleVersion: go1.23.0
-    algorithm: SHA-1
-    cryptographyType: Message Digest
-    callingFunction: LengthName
 ```
 
 This prototype was generated with the help of ChatGPT `o1-mini-high` with the intent of sussing out viability of this approach.
