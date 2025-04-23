@@ -1,0 +1,3 @@
+[submodule "crypto_algorithms_open_dataset"]
+	path = crypto_algorithms_open_dataset
+	url = https://github.com/scanoss/crypto_algorithms_open_dataset
