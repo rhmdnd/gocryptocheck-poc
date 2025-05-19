@@ -21,7 +21,7 @@ $ go build -o gocryptocheck main.go
 Run the tool on a Golang project repository:
 
 ```console
-$ ../gocryptocheck-poc/gocryptocheck -format cyclonedx -excludeDir vendor
+$ ../gocryptocheck-poc/gocryptocheck -excludeDir vendor
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
@@ -62,63 +62,114 @@ $ ../gocryptocheck-poc/gocryptocheck -format cyclonedx -excludeDir vendor
 }
 ```
 
-Add a comment describing the usage:
-
-```diff
-$ git diff
-diff --git a/pkg/utils/nameutils.go b/pkg/utils/nameutils.go
-index b4691f44a..8c046da46 100644
---- a/pkg/utils/nameutils.go
-+++ b/pkg/utils/nameutils.go
-@@ -17,6 +17,7 @@ func LengthName(maxLen int, hashPrefix string, format string, a ...interface{})
-
-        // If that's too long, just hash the name. It's not very user friendly, but whatever
-        //
-+       // gocryptocheck: sha1.New() is only used here to hash a string so it's shorter
-        // We can suppress the gosec warning about sha1 here because we don't use sha1 for crypto
-        // purposes, but only as a string shortener
-        // #nosec G401
-```
-
-Run the tool again:
+Save CBOM output to a file:
 
 ```console
-$ ../gocryptocheck-poc/gocryptocheck -format cyclonedx -excludeDir vendor
+$ ../gocryptocheck --excludeDir vendor > cbom.json
+```
+
+Use output to find specific cryptographic usage:
+
+```console
+$ cat cbom.json| jq '.components[] | select(.name=="crypto/sha256.New")'                                                                                                                                                                                                                                                                                                                                                                              3 ↵
 {
-  "bomFormat": "CycloneDX",
-  "specVersion": "1.6",
-  "version": 1,
-  "components": [
+  "type": "cryptographic-asset",
+  "name": "crypto/sha256.New",
+  "cryptoProperties": {
+    "algorithmProperties": {
+      "cryptoFunctions": [
+        "digest"
+      ],
+      "primitive": "hash"
+    },
+    "assetType": "algorithm"
+  },
+  "properties": [
     {
-      "type": "cryptographic-asset",
-      "name": "crypto/sha1.New",
-      "cryptoProperties": {
-        "algorithmProperties": {
-          "cryptoFunctions": [
-            "digest"
-          ],
-          "primitive": "hash"
-        },
-        "assetType": "algorithm"
-      },
-      "properties": [
-        {
-          "name": "callingFunction",
-          "value": "LengthName"
-        },
-        {
-          "name": "file",
-          "value": "pkg/utils/nameutils.go"
-        },
-        {
-          "name": "line",
-          "value": 24
-        },
-        {
-          "name": "rationale",
-          "value": "sha1.New() is only used here to hash a string so it's shorter"
-        }
-      ]
+      "name": "pkg/asset/agent/image/cache.go:168",
+      "value": "gocryptocheck: Used to produce a checksum and validate cached files.\nWrap the reader in TeeReader to calculate sha256 checksum on the fly"
+    }
+  ]
+}
+{
+  "type": "cryptographic-asset",
+  "name": "crypto/sha256.New",
+  "cryptoProperties": {
+    "algorithmProperties": {
+      "cryptoFunctions": [
+        "digest"
+      ],
+      "primitive": "hash"
+    },
+    "assetType": "algorithm"
+  },
+  "properties": [
+    {
+      "name": "pkg/asset/agent/image/oc.go:252",
+      "value": "gocryptocheck: Used to validate cached installer files and inform the user if the installer is outdated."
+    }
+  ]
+}
+{
+  "type": "cryptographic-asset",
+  "name": "crypto/sha256.New",
+  "cryptoProperties": {
+    "algorithmProperties": {
+      "cryptoFunctions": [
+        "digest"
+      ],
+      "primitive": "hash"
+    },
+    "assetType": "algorithm"
+  },
+  "properties": [
+    {
+      "name": "pkg/tfvars/internal/cache/cache.go:145",
+      "value": "gocryptocheck: Used to hash files on disk for cache logic.\nWrap the reader in TeeReader to calculate sha256 checksum on the fly"
+    }
+  ]
+}
+{
+  "type": "cryptographic-asset",
+  "name": "crypto/sha256.New",
+  "cryptoProperties": {
+    "algorithmProperties": {
+      "cryptoFunctions": [
+        "digest"
+      ],
+      "primitive": "hash"
+    },
+    "assetType": "algorithm"
+  },
+  "properties": [
+    {
+      "name": "terraform/providers/vsphereprivate/resource_vsphereprivate_import_ova.go:346",
+      "value": "gocryptocheck: Used to hash the contents of corrupt .ovf files. The hash is used in error messages.\nGet a sha256 on the corrupt OVA file\nand the size of the file"
+    }
+  ]
+}
+```
+
+In this case, finding usage of SHA1:
+
+```console
+$ cat cbom.json| jq '.components[] | select(.name=="crypto/sha1.Sum")'
+{
+  "type": "cryptographic-asset",
+  "name": "crypto/sha1.Sum",
+  "cryptoProperties": {
+    "algorithmProperties": {
+      "cryptoFunctions": [
+        "digest"
+      ],
+      "primitive": "hash"
+    },
+    "assetType": "algorithm"
+  },
+  "properties": [
+    {
+      "name": "pkg/asset/tls/tls.go:152",
+      "value": "gocryptocheck: Used to generate a hash of an SSH public key."
     }
   ]
 }
