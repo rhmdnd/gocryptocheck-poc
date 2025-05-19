@@ -17,20 +17,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "cacheFile"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/agent/image/cache.go"
-        },
-        {
-          "name": "line",
-          "value": 168
-        },
-        {
-          "name": "rationale",
-          "value": "Used to produce a checksum and validate cached files."
+          "name": "pkg/asset/agent/image/cache.go:168",
+          "value": "gocryptocheck: Used to produce a checksum and validate cached files.\nWrap the reader in TeeReader to calculate sha256 checksum on the fly"
         }
       ]
     },
@@ -48,20 +36,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "verifyCacheFile"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/agent/image/oc.go"
-        },
-        {
-          "name": "line",
-          "value": 252
-        },
-        {
-          "name": "rationale",
-          "value": "Used to validate cached installer files and inform the user if the installer is outdated."
+          "name": "pkg/asset/agent/image/oc.go:252",
+          "value": "gocryptocheck: Used to validate cached installer files and inform the user if the installer is outdated."
         }
       ]
     },
@@ -70,26 +46,17 @@
       "name": "crypto/rand.Int",
       "cryptoProperties": {
         "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
           "primitive": "drbg"
         },
         "assetType": "algorithm"
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "generateRandomPassword"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/ignition/bootstrap/baremetal/ironic_creds.go"
-        },
-        {
-          "name": "line",
-          "value": 43
-        },
-        {
-          "name": "rationale",
-          "value": "Used to randomly select characters for passwords."
+          "name": "pkg/asset/ignition/bootstrap/baremetal/ironic_creds.go:43",
+          "value": "gocryptocheck: Used to randomly select characters for passwords."
         }
       ]
     },
@@ -98,26 +65,17 @@
       "name": "crypto/rand.Int",
       "cryptoProperties": {
         "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
           "primitive": "drbg"
         },
         "assetType": "algorithm"
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "generateRandomPasswordHash"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/password/password.go"
-        },
-        {
-          "name": "line",
-          "value": 54
-        },
-        {
-          "name": "rationale",
-          "value": "Used to select random characters for passwords."
+          "name": "pkg/asset/password/password.go:54",
+          "value": "gocryptocheck: Used to select random characters for passwords."
         }
       ]
     },
@@ -126,26 +84,17 @@
       "name": "crypto/rand.Int",
       "cryptoProperties": {
         "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
           "primitive": "drbg"
         },
         "assetType": "algorithm"
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "generateRandomPasswordHash"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/password/password.go"
-        },
-        {
-          "name": "line",
-          "value": 64
-        },
-        {
-          "name": "rationale",
-          "value": "Used to select random characters for passwords."
+          "name": "pkg/asset/password/password.go:64",
+          "value": "gocryptocheck: Used to select random characters for passwords."
         }
       ]
     },
@@ -163,20 +112,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "generateRandomPasswordHash"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/password/password.go"
-        },
-        {
-          "name": "line",
-          "value": 80
-        },
-        {
-          "name": "rationale",
-          "value": "Generate a hash of a randomly generated password."
+          "name": "pkg/asset/password/password.go:80",
+          "value": "gocryptocheck: Generate a hash of a randomly generated password."
         }
       ]
     },
@@ -188,20 +125,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "Generate"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/tls/bootstrapsshkeypair.go"
-        },
-        {
-          "name": "line",
-          "value": 47
-        },
-        {
-          "name": "rationale",
-          "value": "Used to save a newly generated ssh keypair to an authorized_keys file."
+          "name": "pkg/asset/tls/bootstrapsshkeypair.go:47",
+          "value": "gocryptocheck: Used to save a newly generated ssh keypair to an authorized_keys file."
         }
       ]
     },
@@ -213,20 +138,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "Generate"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/tls/bootstrapsshkeypair.go"
-        },
-        {
-          "name": "line",
-          "value": 54
-        },
-        {
-          "name": "rationale",
-          "value": "Used to save a newly generated ssh keypair to an authorized_keys file."
+          "name": "pkg/asset/tls/bootstrapsshkeypair.go:54",
+          "value": "gocryptocheck: Used to save a newly generated ssh keypair to an authorized_keys file."
         }
       ]
     },
@@ -244,24 +157,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "PrivateKey"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/tls/tls.go"
-        },
-        {
-          "name": "line",
-          "value": 55
-        },
-        {
-          "name": "rationale",
-          "value": "Used to generate a random SSH private key"
-        },
-        {
-          "name": "keyStrength",
-          "value": "2048"
+          "name": "pkg/asset/tls/tls.go:55",
+          "value": "gocryptocheck: Used to generate a random SSH private key; properties-keyStrength: 2048"
         }
       ]
     },
@@ -270,26 +167,17 @@
       "name": "crypto/rand.Int",
       "cryptoProperties": {
         "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
           "primitive": "drbg"
         },
         "assetType": "algorithm"
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "SelfSignedCertificate"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/tls/tls.go"
-        },
-        {
-          "name": "line",
-          "value": 66
-        },
-        {
-          "name": "rationale",
-          "value": "Used to generate a serial number for a self-signed certificate."
+          "name": "pkg/asset/tls/tls.go:66",
+          "value": "gocryptocheck: Used to generate a serial number for a self-signed certificate."
         }
       ]
     },
@@ -298,26 +186,17 @@
       "name": "crypto/rand.Int",
       "cryptoProperties": {
         "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
           "primitive": "drbg"
         },
         "assetType": "algorithm"
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "SignedCertificate"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/tls/tls.go"
-        },
-        {
-          "name": "line",
-          "value": 104
-        },
-        {
-          "name": "rationale",
-          "value": "Used to generate a serial number for a signed certificate."
+          "name": "pkg/asset/tls/tls.go:104",
+          "value": "gocryptocheck: Used to generate a serial number for a signed certificate."
         }
       ]
     },
@@ -335,20 +214,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "generateSubjectKeyID"
-        },
-        {
-          "name": "file",
-          "value": "pkg/asset/tls/tls.go"
-        },
-        {
-          "name": "line",
-          "value": 152
-        },
-        {
-          "name": "rationale",
-          "value": "Used to generate a hash of an SSH public key."
+          "name": "pkg/asset/tls/tls.go:152",
+          "value": "gocryptocheck: Used to generate a hash of an SSH public key."
         }
       ]
     },
@@ -360,20 +227,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "getAgent"
-        },
-        {
-          "name": "file",
-          "value": "pkg/gather/ssh/agent.go"
-        },
-        {
-          "name": "line",
-          "value": 21
-        },
-        {
-          "name": "rationale",
-          "value": "Used to establish SSH connections."
+          "name": "pkg/gather/ssh/agent.go:21",
+          "value": "gocryptocheck: Used to establish SSH connections."
         }
       ]
     },
@@ -385,20 +240,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "newAgent"
-        },
-        {
-          "name": "file",
-          "value": "pkg/gather/ssh/agent.go"
-        },
-        {
-          "name": "line",
-          "value": 37
-        },
-        {
-          "name": "rationale",
-          "value": "Used to store keys in memory for SSH sessions."
+          "name": "pkg/gather/ssh/agent.go:37",
+          "value": "gocryptocheck: Used to store keys in memory for SSH sessions."
         }
       ]
     },
@@ -410,20 +253,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "NewClient"
-        },
-        {
-          "name": "file",
-          "value": "pkg/gather/ssh/ssh.go"
-        },
-        {
-          "name": "line",
-          "value": 29
-        },
-        {
-          "name": "rationale",
-          "value": "Used to create a new SSH client which can be used to SSH to address using user and the keys."
+          "name": "pkg/gather/ssh/ssh.go:29",
+          "value": "gocryptocheck: Used to create a new SSH client which can be used to SSH to address using user and the keys."
         }
       ]
     },
@@ -435,20 +266,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "NewClient"
-        },
-        {
-          "name": "file",
-          "value": "pkg/gather/ssh/ssh.go"
-        },
-        {
-          "name": "line",
-          "value": 35
-        },
-        {
-          "name": "rationale",
-          "value": "Use a callback rather than PublicKeys"
+          "name": "pkg/gather/ssh/ssh.go:35",
+          "value": "gocryptocheck: Use a callback rather than PublicKeys\nso we only consult the agent once the remote server\nwants it."
         }
       ]
     },
@@ -460,20 +279,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "NewClient"
-        },
-        {
-          "name": "file",
-          "value": "pkg/gather/ssh/ssh.go"
-        },
-        {
-          "name": "line",
-          "value": 38
-        },
-        {
-          "name": "rationale",
-          "value": "Used to ignore insecure hosts."
+          "name": "pkg/gather/ssh/ssh.go:38",
+          "value": "gocryptocheck: Used to ignore insecure hosts."
         }
       ]
     },
@@ -485,20 +292,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "NewClient"
-        },
-        {
-          "name": "file",
-          "value": "pkg/gather/ssh/ssh.go"
-        },
-        {
-          "name": "line",
-          "value": 50
-        },
-        {
-          "name": "rationale",
-          "value": "Used for routing authentication requests to the correct keyring."
+          "name": "pkg/gather/ssh/ssh.go:50",
+          "value": "gocryptocheck: Used for routing authentication requests to the correct keyring."
         }
       ]
     },
@@ -510,20 +305,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "Run"
-        },
-        {
-          "name": "file",
-          "value": "pkg/gather/ssh/ssh.go"
-        },
-        {
-          "name": "line",
-          "value": 64
-        },
-        {
-          "name": "rationale",
-          "value": "Used to setup agent forwarding for the SSH session."
+          "name": "pkg/gather/ssh/ssh.go:64",
+          "value": "gocryptocheck: Used to setup agent forwarding for the SSH session."
         }
       ]
     },
@@ -535,20 +318,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "LoadPrivateSSHKeys"
-        },
-        {
-          "name": "file",
-          "value": "pkg/gather/ssh/ssh.go"
-        },
-        {
-          "name": "line",
-          "value": 136
-        },
-        {
-          "name": "rationale",
-          "value": "Used to parse private key data after reading it from a file on disk."
+          "name": "pkg/gather/ssh/ssh.go:136",
+          "value": "gocryptocheck: Used to parse private key data after reading it from a file on disk."
         }
       ]
     },
@@ -566,20 +337,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "cacheFile"
-        },
-        {
-          "name": "file",
-          "value": "pkg/tfvars/internal/cache/cache.go"
-        },
-        {
-          "name": "line",
-          "value": 145
-        },
-        {
-          "name": "rationale",
-          "value": "Used to hash files on disk for cache logic."
+          "name": "pkg/tfvars/internal/cache/cache.go:145",
+          "value": "gocryptocheck: Used to hash files on disk for cache logic.\nWrap the reader in TeeReader to calculate sha256 checksum on the fly"
         }
       ]
     },
@@ -597,20 +356,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "CloudControllerUID"
-        },
-        {
-          "name": "file",
-          "value": "pkg/types/gcp/clouduid.go"
-        },
-        {
-          "name": "line",
-          "value": 12
-        },
-        {
-          "name": "rationale",
-          "value": "Used to generate an ID for the Cloud Controller bashed on a hash of the infrastructure ID."
+          "name": "pkg/types/gcp/clouduid.go:12",
+          "value": "gocryptocheck: Used to generate an ID for the Cloud Controller bashed on a hash of the infrastructure ID."
         }
       ]
     },
@@ -619,26 +366,17 @@
       "name": "crypto/rand.Int",
       "cryptoProperties": {
         "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
           "primitive": "drbg"
         },
         "assetType": "algorithm"
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "SetPlatformDefaults"
-        },
-        {
-          "name": "file",
-          "value": "pkg/types/powervs/defaults/platform.go"
-        },
-        {
-          "name": "line",
-          "value": 21
-        },
-        {
-          "name": "rationale",
-          "value": "Used to generate a random number for the third octet of the network ID."
+          "name": "pkg/types/powervs/defaults/platform.go:21",
+          "value": "gocryptocheck: Used to generate a random number for the third octet of the network ID."
         }
       ]
     },
@@ -647,26 +385,17 @@
       "name": "crypto/rand.Int",
       "cryptoProperties": {
         "algorithmProperties": {
+          "cryptoFunctions": [
+            "unknown"
+          ],
           "primitive": "drbg"
         },
         "assetType": "algorithm"
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "genRandNum"
-        },
-        {
-          "name": "file",
-          "value": "pkg/types/powervs/validation/platform_test.go"
-        },
-        {
-          "name": "line",
-          "value": 21
-        },
-        {
-          "name": "rationale",
-          "value": "Used to generate a random number, which is used to get a random zone name for testing."
+          "name": "pkg/types/powervs/validation/platform_test.go:21",
+          "value": "gocryptocheck: Used to generate a random number, which is used to get a random zone name for testing.\nget big.Int between 0 and bg"
         }
       ]
     },
@@ -678,20 +407,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "validateFIPSconfig"
-        },
-        {
-          "name": "file",
-          "value": "pkg/types/validation/installconfig.go"
-        },
-        {
-          "name": "line",
-          "value": 980
-        },
-        {
-          "name": "rationale",
-          "value": "Reads public SSH keys to perform additional validation that ensure the key is compliant with FIPS compatible key types."
+          "name": "pkg/types/validation/installconfig.go:980",
+          "value": "gocryptocheck: Reads public SSH keys to perform additional validation that ensure the key is compliant with FIPS compatible key types."
         }
       ]
     },
@@ -703,20 +420,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "SSHPublicKey"
-        },
-        {
-          "name": "file",
-          "value": "pkg/validate/validate.go"
-        },
-        {
-          "name": "line",
-          "value": 192
-        },
-        {
-          "name": "rationale",
-          "value": "Helper function that relies on ssh.ParseAuthorizedKey() to validate the public SSH key, and returns an error if the key is invalid."
+          "name": "pkg/validate/validate.go:192",
+          "value": "gocryptocheck: Helper function that relies on ssh.ParseAuthorizedKey() to validate the public SSH key, and returns an error if the key is invalid."
         }
       ]
     },
@@ -734,20 +439,8 @@
       },
       "properties": [
         {
-          "name": "callingFunction",
-          "value": "resourceVSpherePrivateImportOvaCreate"
-        },
-        {
-          "name": "file",
-          "value": "terraform/providers/vsphereprivate/resource_vsphereprivate_import_ova.go"
-        },
-        {
-          "name": "line",
-          "value": 346
-        },
-        {
-          "name": "rationale",
-          "value": "Used to hash the contents of corrupt .ovf files. The hash is used in error messages."
+          "name": "terraform/providers/vsphereprivate/resource_vsphereprivate_import_ova.go:346",
+          "value": "gocryptocheck: Used to hash the contents of corrupt .ovf files. The hash is used in error messages.\nGet a sha256 on the corrupt OVA file\nand the size of the file"
         }
       ]
     }

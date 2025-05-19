@@ -4,6 +4,7 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"embed"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -11,12 +12,15 @@ import (
 	"go/parser"
 	"go/token"
 	"io"
+	"io/fs"
 	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"runtime"
 	"strings"
+
+	"gopkg.in/yaml.v2"
 )
 
 // cryptoPackages lists known cryptographic package identifiers.
@@ -42,8 +46,56 @@ var cryptoPackages = []string{
 	"github.com/minio/minio-go",
 }
 
+//go:embed crypto_algorithms_open_dataset/definitions_crypto_algorithms/algorithms/**/*.yaml
+var algoFS embed.FS
 var moduleVersions map[string]string
-var excludeDirs []string // populated via flag
+var excludeDirs []string
+
+var (
+	algoKeywordIndex = map[string]interface{}{} // "pkg.Func" → props
+	datasetPackages  = map[string]struct{}{}    // quick package-prefix lookup
+)
+
+// AlgorithmProps represents the subset we need for CycloneDX mapping.
+type AlgorithmProps struct {
+	Primitive       string   `yaml:"primitive"`
+	CryptoFunctions []string `yaml:"cryptoFunctions"`
+}
+
+// algorithmDefinition mirrors the structure of each YAML file.
+type algorithmDefinition struct {
+	Algorithm           string         `yaml:"algorithm"`
+	AlgorithmId         string         `yaml:"algorithmId"`
+	Category            string         `yaml:"catagory"`
+	Stength             string         `yaml:"strength"`
+	Keywords            []string       `yaml:"keywords"`
+	AlgorithmProperties AlgorithmProps `yaml:"algorithmProperties"`
+}
+
+func initEmbeddedAlgorithms() {
+	if err := loadEmbeddedAlgorithms(); err != nil {
+		log.Printf("warning: failed to load embedded crypto dataset: %v", err)
+	}
+	log.Printf("loaded algorithms from embedded crypto dataset")
+}
+
+func loadEmbeddedAlgorithms() error {
+	return fs.WalkDir(algoFS, ".", func(path string, d fs.DirEntry, err error) error {
+		if err != nil || d.IsDir() || !strings.HasSuffix(path, ".yaml") {
+			return err
+		}
+		data, err := algoFS.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		var def algorithmDefinition
+		if err := yaml.Unmarshal(data, &def); err != nil {
+			return err
+		}
+		algoKeywordIndex[def.AlgorithmId] = def
+		return nil
+	})
+}
 
 // isCryptoPackage returns true if pkgPath is a known crypto package or is a subpackage of one.
 func isCryptoPackage(pkgPath string) bool {
@@ -94,6 +146,8 @@ func main() {
 		return nil
 	})
 	flag.Parse()
+
+	initEmbeddedAlgorithms()
 
 	var err error
 	moduleVersions, err = loadModuleVersions()
@@ -233,92 +287,45 @@ func resolveModuleVersion(pkgPath string) string {
 	return ver
 }
 
-// helper: map pkg+func → (algorithm name, primitive)
-func getAlgorithmPropsByFunction(pkgPath, funcName string) map[string]interface{} {
-	algoProps := make(map[string]interface{})
-	switch pkgPath {
-	case "crypto/sha1":
-		algoProps["primitive"] = "hash"
-		algoProps["cryptoFunctions"] = []string{"digest"}
-	case "crypto/sha256":
-		algoProps["primitive"] = "hash"
-		algoProps["cryptoFunctions"] = []string{"digest"}
-	case "crypto/sha512":
-		algoProps["primitive"] = "hash"
-		algoProps["cryptoFunctions"] = []string{"digest"}
-	case "crypto/md5":
-		algoProps["primitive"] = "hash"
-		algoProps["cryptoFunctions"] = []string{"digest"}
-	case "crypto/aes":
-		algoProps["primitive"] = "block-cipher"
-		algoProps["cryptoFunctions"] = []string{"encrypt", "decrypt"}
-	case "crypto/des":
-		algoProps["primitive"] = "block-cipher"
-		algoProps["cryptoFunctions"] = []string{"encrypt", "decrypt"}
-	case "crypto/hmac":
-		algoProps["primitive"] = "mac"
-		algoProps["cryptoFunctions"] = []string{"sign"}
-	case "crypto/rand":
-		algoProps["primitive"] = "drbg"
-	case "crypto/rsa":
-		switch funcName {
-		case "GenerateKey":
-			algoProps["primitive"] = "pke"
-			algoProps["cryptoFunctions"] = []string{"keygen"}
-		case "EncryptOAEP", "DecryptOAEP":
-			algoProps["primitive"] = "pke"
-			algoProps["cryptoFunctions"] = []string{"encrypt", "decrypt"}
-		case "SignPSS":
-			algoProps["primitive"] = "signature"
-			algoProps["cryptoFunctions"] = []string{"sign"}
-		case "SignPKCS1v15", "VerifyPKCS1v15":
-			algoProps["primitive"] = "signature"
-			algoProps["cryptoFunctions"] = []string{"sign"}
-		default:
-			algoProps["primitive"] = "signature"
-			algoProps["cryptoFunctions"] = []string{"sign"}
-		}
-	case "crypto/ecdsa":
-		switch funcName {
-		case "GenerateKey":
-			// Label as other since GenerateKey a key generation
-			// algorithm and doesn't fall cleanly into any of the
-			// existing CycloneDX primitive types.
-			algoProps["primitive"] = "other"
-			algoProps["cryptoFunctions"] = []string{"keygen"}
-		case "Sign":
-			algoProps["primitive"] = "signature"
-			algoProps["cryptoFunctions"] = []string{"sign"}
-		case "Verify":
-			algoProps["primitive"] = "signature"
-			algoProps["cryptoFunctions"] = []string{"sign"}
-		default:
-			algoProps["primitive"] = "signature"
-			algoProps["cryptoFunctions"] = []string{"sign"}
-		}
-	case "crypto/ed25519":
-		switch funcName {
-		case "GenerateKey":
-			// Label as other since GenerateKey a key generation
-			// algorithm and doesn't fall cleanly into any of the
-			// existing CycloneDX primitive types.
-			algoProps["primitive"] = "other"
-			algoProps["cryptoFunctions"] = []string{"keygen"}
-		case "Sign":
-			algoProps["primitive"] = "signature"
-			algoProps["cryptoFunctions"] = []string{"sign"}
-		case "Verify":
-			algoProps["primitive"] = "signature"
-			algoProps["cryptoFunctions"] = []string{"sign"}
-		default:
-			algoProps["primitive"] = "signature"
-			algoProps["cryptoFunctions"] = []string{"sign"}
-		}
-	default:
-		algoProps["primitive"] = "unknown"
-		algoProps["cryptoFunctions"] = []string{"unknown"}
+// getAlgorithmPropsByFunction maps pkg+func → (primitive, cryptoFunctions)
+func getAlgorithmPropsByFunction(pkg, fn string) map[string]interface{} {
+	props := map[string]interface{}{
+		"primitive":       "unknown",
+		"cryptoFunctions": []string{"unknown"},
 	}
-	return algoProps
+
+	switch pkg {
+	case "crypto/sha1", "crypto/sha256", "crypto/sha512", "crypto/md5":
+		props["primitive"], props["cryptoFunctions"] = "hash", []string{"digest"}
+
+	case "crypto/aes", "crypto/des":
+		props["primitive"], props["cryptoFunctions"] = "block-cipher", []string{"encrypt", "decrypt"}
+
+	case "crypto/hmac":
+		props["primitive"], props["cryptoFunctions"] = "mac", []string{"sign"}
+
+	case "crypto/rand":
+		props["primitive"] = "drbg"
+
+	case "crypto/rsa":
+		switch fn {
+		case "GenerateKey":
+			props["primitive"], props["cryptoFunctions"] = "pke", []string{"keygen"}
+		case "EncryptOAEP", "DecryptOAEP":
+			props["primitive"], props["cryptoFunctions"] = "pke", []string{"encrypt", "decrypt"}
+		default:
+			props["primitive"], props["cryptoFunctions"] = "signature", []string{"sign"}
+		}
+
+	case "crypto/ecdsa", "crypto/ed25519":
+		if fn == "GenerateKey" {
+			props["primitive"], props["cryptoFunctions"] = "other", []string{"keygen"}
+		} else {
+			props["primitive"], props["cryptoFunctions"] = "signature", []string{"sign"}
+		}
+	}
+
+	return props
 }
 
 // scanDirectory recursively scans a directory for Go files, skipping vendor directories.
@@ -405,12 +412,10 @@ func scanFilePath(fset *token.FileSet, path string) ([]CryptoUsage, error) {
 			}
 
 			pos := fset.Position(call.Pos())
-			documented, rationale, metadata := findCryptoUsageComment(file, call, fset)
+			documented, rationale := findCryptoUsageComment(file, call, fset)
 
 			// ensure metadata map
-			if metadata == nil {
-				metadata = make(map[string]string)
-			}
+			metadata := make(map[string]string)
 
 			// make sure we track the module version for additional transparency
 			metadata["moduleVersion"] = resolveModuleVersion(pkgPath)
@@ -435,46 +440,30 @@ func scanFilePath(fset *token.FileSet, path string) ([]CryptoUsage, error) {
 	return usages, nil
 }
 
-// findCryptoUsageComment searches for a gocryptocheck comment near the AST node.
-// It returns whether a comment was found, the rationale text (the first segment),
-// and any additional key-value pairs parsed from subsequent segments.
-// Format: gocryptocheck: <rationale>[; key: value; ...]
-func findCryptoUsageComment(file *ast.File, node ast.Node, fset *token.FileSet) (bool, string, map[string]string) {
-	nodePos := fset.Position(node.Pos())
+// findCryptoUsageComment looks for *any* comment immediately preceding the node
+// and returns (found, commentText).
+func findCryptoUsageComment(file *ast.File, node ast.Node, fset *token.FileSet) (bool, string) {
+	callPos := fset.Position(node.Pos())
 	for _, cg := range file.Comments {
-		cgPos := fset.Position(cg.End())
-		// Consider comments ending on the same line or immediately preceding the node.
-		if nodePos.Line-cgPos.Line <= 1 && nodePos.Line-cgPos.Line >= 0 {
-			for _, comment := range cg.List {
-				if strings.Contains(comment.Text, "gocryptocheck:") {
-					parts := strings.SplitN(comment.Text, "gocryptocheck:", 2)
-					commentContent := strings.TrimSpace(parts[1])
-					segments := strings.Split(commentContent, ";")
-					if len(segments) == 0 {
-						return true, "", nil
-					}
-					// The first segment is the rationale.
-					rationale := strings.TrimSpace(segments[0])
-					metadata := make(map[string]string)
-					// Process additional segments for key-value pairs.
-					for _, seg := range segments[1:] {
-						seg = strings.TrimSpace(seg)
-						if seg == "" {
-							continue
-						}
-						kv := strings.SplitN(seg, ":", 2)
-						if len(kv) == 2 {
-							key := strings.TrimSpace(kv[0])
-							value := strings.TrimSpace(kv[1])
-							metadata[key] = value
-						}
-					}
-					return true, rationale, metadata
+		cgEnd := fset.Position(cg.End())
+		// only consider comment groups ending on the same line or one line above
+		if callPos.Line-cgEnd.Line >= 0 && callPos.Line-cgEnd.Line <= 1 {
+			// join all lines of this comment group (strip the leading // or /* */)
+			var lines []string
+			for _, c := range cg.List {
+				text := c.Text
+				// strip comment markers
+				if strings.HasPrefix(text, "//") {
+					text = strings.TrimSpace(text[2:])
+				} else if strings.HasPrefix(text, "/*") {
+					text = strings.Trim(text, "/* ")
 				}
+				lines = append(lines, text)
 			}
+			return true, strings.Join(lines, "\n")
 		}
 	}
-	return false, "", nil
+	return false, ""
 }
 
 // outputCycloneDX outputs a CycloneDX BOM in JSON format.
@@ -492,7 +481,7 @@ func outputCycloneDX(usages []CryptoUsage) {
 		if usage.Documented {
 			desc = usage.Reason
 		} else {
-			desc = "Undocumented cryptographic usage. Please add a comment of the form `gocryptocheck: <rationale>[; key: value...]`."
+			desc = "Undocumented cryptographic usage."
 		}
 
 		// Assemble cryptoProperties per 1.6 CycloneDX scheme
@@ -508,14 +497,11 @@ func outputCycloneDX(usages []CryptoUsage) {
 			cryptoProps["assetType"] = "algorithm"
 		}
 
-		// Put the caller function in the component properties since
-		// there isn't a good place for it anywhere in the
-		// cryptoProperties, according to the CycloneDX 1.6 schema.
+		// Now consolidate file/line/caller into ONE property:
+		location := fmt.Sprintf("%s:%d", usage.File, usage.Line)
+
 		compProps := []Property{
-			{Name: "callingFunction", Value: usage.Caller},
-			{Name: "file", Value: usage.File},
-			{Name: "line", Value: usage.Line},
-			{Name: "rationale", Value: desc},
+			{Name: location, Value: desc},
 		}
 
 		// algorithmProperties grouping
@@ -536,6 +522,9 @@ func outputCycloneDX(usages []CryptoUsage) {
 			}
 		}
 
+		// TODO: Integrate this into algoKeywordIndex somehow - so that
+		// we can use a single data set to classify cryptographic
+		// usage.
 		component := Component{
 			Type:             "cryptographic-asset",
 			Name:             compName,
